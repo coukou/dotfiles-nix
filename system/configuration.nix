@@ -40,7 +40,6 @@
     description = "coukou";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      neovim
       git
     ];
   };
