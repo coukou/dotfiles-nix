@@ -6,9 +6,6 @@ let
 in
 {
   options.windowManagers.i3 = { enable = lib.mkEnableOption "i3"; };
-imports = [
-./config.nix
-];
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       i3status
@@ -20,7 +17,31 @@ imports = [
       windowManager.i3 = {
         enable = true;
 	package = pkgs.i3-gaps;
-	config = null;
+
+	config = rec {
+	  modifier = "Mod4";
+	  bars = [ ];
+
+	  window.border = 0;
+
+	  gaps = {
+	    inner = 15;
+	    outer = 5;
+	  };
+
+	  keybindings = lib.mkOptionDefault {
+	    "${modifier}+Return" = "exec wezterm";
+	    "${modifier}+Q" = "kill";
+	  };
+
+	  startup = [
+	    {
+	      command = "exec i3-msg workspace 1";
+	      always = true;
+	      notification = false;
+	    }
+	  ];
+	};
       };
     };
   };
