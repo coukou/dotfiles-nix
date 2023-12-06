@@ -10,6 +10,10 @@ imports = [
 ./config.nix
 ];
   config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [
+      i3status
+    ];
+
     xsession = {
       enable = true;
 
