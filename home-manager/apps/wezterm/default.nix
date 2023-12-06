@@ -12,6 +12,7 @@ in
 
       extraConfig = ''
         return {
+	  window_background_opacity = 0.95,
 	  font = wezterm.font("Monaspace Neon"),
 	}
       '';
