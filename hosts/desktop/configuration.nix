@@ -19,13 +19,6 @@
   # Enable polkit
   security.polkit.enable = true;
 
-  # 1Password, TODO: Move this somewhere else
-  # programs._1password.enable = true;
-  # programs._1password-gui = {
-  #  enable = true;
-  #  polkitPolicyOwners = [ "coukou" ];
-  # };
-
   # Version
   system.stateVersion = "23.11";
 }
