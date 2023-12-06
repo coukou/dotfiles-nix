@@ -7,8 +7,9 @@ in
 {
   options.windowManagers.i3 = { enable = lib.mkEnableOption "i3"; };
   config = lib.mkIf cfg.enable {
+
     home.packages = with pkgs; [
-      i3status
+      font-awesome
     ];
 
     xsession = {
@@ -20,9 +21,15 @@ in
 
 	config = rec {
 	  modifier = "Mod4";
-	  bars = [ ];
 
 	  window.border = 0;
+
+	  bars = [
+	    {
+	      position = "bottom";
+	      statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ${./i3status-rust.toml}";
+	    }
+	  ];
 
 	  gaps = {
 	    inner = 15;
