@@ -45,7 +45,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 	  bufmap('K', vim.lsp.buf.hover)
 
-	  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+	  vim.api.nvim_buf_create_user_command(ev.buf, 'Format', function(_)
 	    vim.lsp.buf.format()
 	  end, {})
   end,
