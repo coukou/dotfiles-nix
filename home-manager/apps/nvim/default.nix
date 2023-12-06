@@ -17,7 +17,9 @@ in
       vimAlias = true;
 
       extraPackages = with pkgs; [
+        rust-analyzer
         lua-language-server
+        nodePackages.typescript-language-server
         rnix-lsp
 
         xclip
