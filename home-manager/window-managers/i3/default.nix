@@ -22,7 +22,7 @@ in
 	config = rec {
 	  modifier = "Mod4";
 
-	  window.border = 0;
+          window.border = 0;
 
 	  bars = [
 	    {
@@ -48,7 +48,14 @@ in
 	      notification = false;
 	    }
 	  ];
-	};
+        };
+
+        extraConfig = ''
+
+          # Hide titlebar
+          for_window [class="^.*"] border pixel 0 
+
+        '';
       };
     };
   };
