@@ -30,7 +30,8 @@
 	    method = "gaussian";
             size = 10;
             deviation = 5.0;
-	  };
+          };
+          corner-radius = 10;
 	};
       };
     };
