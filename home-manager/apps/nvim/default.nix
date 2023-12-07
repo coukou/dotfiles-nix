@@ -26,8 +26,20 @@ in
         wl-clipboard
       ];
 
+      extraConfig = ''
+        colorscheme catppuccin
+        set rnu
+      '';
 
       plugins = with pkgs.vimPlugins; [
+        {
+          plugin = catppuccin-nvim;
+          config = toLua ''
+          require("catppuccin").setup({
+            transparent_background = true
+          })
+          '';
+        }
 
         luasnip
 
