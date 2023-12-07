@@ -34,6 +34,9 @@
     xkbVariant = "";
   };
 
+  programs.fish.enable = true;
+  users.defaultUserShell = pkgs.fish;
+
   # Define a default user coukou.
   users.users.coukou = {
     isNormalUser = true;

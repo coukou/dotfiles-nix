@@ -5,6 +5,7 @@
     imports = [
         ./apps
 	./window-managers
-	./fonts
+        ./fonts
+        ./terms
     ];
 }

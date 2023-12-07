@@ -14,6 +14,11 @@
 	spotify.enable = true;
       };
 
+      terms = {
+        starship.enable = true;
+        fish.enable = true;
+      };
+
       fonts = {
         monaspace.enable = true;
       };
