@@ -1,0 +1,87 @@
+@define-color workspace_btn_hover_text #9370DB;
+@define-color workspace_btn_active_text #9370DB;
+
+* {
+    border: none;
+    padding: 0;
+    border-radius: 0px;
+    min-height: 0;
+    margin: 0.2em 0.3em 0.2em 0.3em;
+    box-shadow: none;
+    text-shadow: none;
+    font-family: "NotoSansMono Nerd Font";
+}
+
+#waybar {
+    background: rgba(0, 0, 0, .8);
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+/* Each module */
+#clock,
+#cpu,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#temperature,
+#tray,
+#bluetooth,
+#workspaces {
+    padding-left: 0.6em;
+    padding-right: 0.6em;
+}
+
+#workspaces {
+    margin: 0;
+}
+
+#workspaces button {
+    opacity: 0.7;
+    color: white;
+
+    border: none;
+    border-radius: 2px;
+}
+
+#workspaces button:hover {
+    opacity: 1;
+    background: none;
+    color: @workspace_btn_hover_text;
+}
+
+#workspaces button.active {
+    opacity: 1;
+    color: @workspace_btn_hover_text;
+}
+
+#workspaces button.empty {}
+#workspaces button.persistent {}
+#workspaces button.special {}
+#workspaces button.visible {}
+#workspaces button.urgent {}
+
+
+#window {}
+
+#bluetooth {}
+
+#network {}
+
+#memory {}
+
+#cpu {}
+#cpu.critical {}
+
+#clock {}
+#clock.date {}
+#clock.time {}
+
+#pulseaudio { }
+
+#pulseaudio.muted { }
+#pulseaudio.source-muted {}
+#tray {}
+

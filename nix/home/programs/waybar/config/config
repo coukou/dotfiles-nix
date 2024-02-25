@@ -1,0 +1,112 @@
+{
+    "layer": "top",
+    "position": "top",
+    "modules-left": [ "hyprland/workspaces", "hyprland/submap" ],
+    "modules-center": [],
+    "modules-right": [ "tray", "custom/notification", "cpu", "memory", "pulseaudio", "network", "clock" ],
+
+    "bluetooth": {
+        "interval": 30,
+        "format": "{icon}",
+        "format-icons": {
+            "enabled": "",
+            "disabled": ""
+        },
+        "on-click": "blueberry"
+    },    
+
+    "tray": {
+        "spacing": 5
+    },
+
+    "clock": {
+        "format": "  {:%H:%M    %e %b}",
+        "today-format": "<b>{}</b>",
+        "on-click": "google-calendar"
+    },
+
+    "cpu": {
+        "interval": "5",      
+        "format": "  {max_frequency}GHz <span color=\"darkgray\">| {usage}%</span>",
+        "max-length": 13,
+        "min-length": 13,
+        "on-click": "kitty -e htop --sort-key PERCENT_CPU",
+        "tooltip": false
+    },
+
+    "memory": {
+        "interval": "5",      
+        "format": "󰍛 {percentage}%",
+        "on-click": "kitty -e htop --sort-key PERCENT_MEM",
+        "tooltip": false
+    },
+
+    "network": {
+        "format-wifi": "  {essid}",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} 󰈀",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "󰞃 ",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "family": "ipv4",
+        "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\n {bandwidthUpBits}  {bandwidthDownBits}",
+        "tooltip-format-ethernet": "󰈀 {ifname}\nIP: {ipaddr}\n󰁝 {bandwidthUpBits} 󰁅 {bandwidthDownBits}"
+    },
+
+    "pulseaudio": {
+        "scroll-step": 3,
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "󰍬",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "󰋎",
+            "hands-free": "",
+            "headset": "󰋎",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+    },
+
+    "hyprland/workspaces": {
+        "format": "{icon}  {windows}",
+        "format-window-separator": "  ",
+        "window-rewrite-default": "",
+        "window-rewrite": {
+            "class<kitty>": "",
+            "class<discord>": "󰙯",
+            "initialTitle<.*spotify.*>": "󰓇",
+            "title<.*youtube.*>": "",
+            "title<.*twitch.*>": "",
+            "class<firefox>": "",
+            "title<.*github.*>": "",
+            "code": "󰨞"
+        }
+    },
+
+     "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+          "notification": "<span foreground='red'><sup></sup></span>",
+          "none": "",
+          "dnd-notification": "<span foreground='red'><sup></sup></span>",
+          "dnd-none": "",
+          "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+          "inhibited-none": "",
+          "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+          "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+      }
+}
