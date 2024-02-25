@@ -10,6 +10,7 @@
     ../programs/notion.nix
     ../programs/google-calendar.nix
     ../programs/vscode.nix
+    ../programs/slack.nix
     ../programs/nvim
   ];
 
