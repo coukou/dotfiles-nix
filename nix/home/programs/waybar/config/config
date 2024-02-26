@@ -28,8 +28,6 @@
     "cpu": {
         "interval": "5",      
         "format": "  {max_frequency}GHz <span color=\"darkgray\">| {usage}%</span>",
-        "max-length": 13,
-        "min-length": 13,
         "on-click": "kitty -e htop --sort-key PERCENT_CPU",
         "tooltip": false
     },
