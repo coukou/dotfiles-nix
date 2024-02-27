@@ -78,6 +78,7 @@
         "window-rewrite": {
             "class<kitty>": "",
             "class<discord>": "󰙯",
+            "class<Slack>": "󰒱",
             "initialTitle<.*spotify.*>": "󰓇",
             "title<.*youtube.*>": "",
             "title<.*twitch.*>": "",
