@@ -4,5 +4,6 @@
     fira-code-nerdfont
     nerdfonts
     monaspace
+    jetbrains-mono
   ];
 }
