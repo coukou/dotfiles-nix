@@ -22,6 +22,7 @@
         stylua
         prettierd
         eslint_d
+        ripgrep
       ];
 
       extraConfig = ''
