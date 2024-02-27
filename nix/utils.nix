@@ -20,7 +20,7 @@
 
   mkComputer =
     { machineConfig
-    , user
+    , users
     , wm ? ""
     , extraModules ? [ ]
     , userConfigs ? [ ]
@@ -29,7 +29,7 @@
 
       # Arguments to pass to all modules
       specialArgs = {
-        inherit system inputs user self stateVersion;
+        inherit system inputs users self stateVersion;
       };
       modules = [
         machineConfig
@@ -41,7 +41,12 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = { inherit inputs self stateVersion; };
-          home-manager.users."${user}" = homeConfig user userConfigs wm { inherit inputs system pkgs self; };
+          home-manager.users = builtins.listToAttrs (map
+            (user: {
+              name = user;
+              value = homeConfig user userConfigs wm { inherit inputs system pkgs self; };
+            })
+            users);
         }
       ] ++ extraModules ++ [
         ./common/fonts.nix

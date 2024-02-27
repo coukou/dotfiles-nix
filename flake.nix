@@ -43,7 +43,7 @@
         desktop = utils.mkComputer {
           machineConfig = ./nix/machines/desktop.nix;
           wm = "hyprland";
-          user = "coukou";
+          users = [ "coukou" "coukou-work" ];
         };
       };
     };

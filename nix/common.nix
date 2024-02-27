@@ -1,7 +1,7 @@
 { config
 , self
 , pkgs
-, user
+, users
 , stateVersion
 , ...
 }: {
@@ -21,22 +21,27 @@
     optimise.automatic = true;
 
     settings = {
-      trusted-users = [ "root" "${user}" ];
+      trusted-users = [ "root" ] ++ map (user: "${user}") users;
       auto-optimise-store = true;
     };
 
     registry.nixpkgs.flake = self.inputs.nixpkgs;
   };
 
-
-
   time.timeZone = "Europe/Paris";
 
-  users.users."${user}" = {
-    isNormalUser = true;
-    shell = pkgs.fish;
-    extraGroups = [ "wheel" "tty" "audio" "video" "docker" ];
-  };
+  users.users = builtins.listToAttrs (
+    map
+      (user: {
+        name = user;
+        value = {
+          isNormalUser = true;
+          shell = pkgs.fish;
+          extraGroups = [ "wheel" "tty" "audio" "video" "docker" ];
+        };
+      })
+      users
+  );
 
   users.groups = {
     docker = { };
