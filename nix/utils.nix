@@ -29,7 +29,7 @@
 
       # Arguments to pass to all modules
       specialArgs = {
-        inherit system inputs users self stateVersion;
+        inherit system inputs users self wm stateVersion;
       };
       modules = [
         machineConfig
