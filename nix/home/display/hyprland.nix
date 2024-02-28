@@ -13,10 +13,16 @@ in
   imports = [
     ../programs/kitty.nix
     ../programs/waybar
+    inputs.ags.homeManagerModules.default
   ];
 
   home.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = 1;
+  };
+
+  programs.ags = {
+    enable = true;
+    extraPackages = with pkgs; [ ];
   };
 
   home.packages = with pkgs; [
@@ -85,8 +91,8 @@ in
 
         blur {
           enabled = true
-          size = 4
-          passes = 2
+          size = 2
+          passes = 4
 
           vibrancy = 0.16574
         }
