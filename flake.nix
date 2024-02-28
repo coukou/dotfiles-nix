@@ -21,6 +21,8 @@
       spicetify-nix.url = github:the-argus/spicetify-nix;
       spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
       spicetify-nix.inputs.flake-utils.follows = "flake-utils";
+
+      ags.url = "github:Aylur/ags";
     };
 
   outputs = inputs @ { self, home-manager, nixpkgs, ... }:

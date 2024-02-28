@@ -11,8 +11,18 @@
 
   # nvidia
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.package = pkgs.linuxKernel.packages.linux_6_1.nvidia_x11;
   hardware.nvidia.modesetting.enable = true;
+
+  hardware.nvidia.package =
+    config.boot.kernelPackages.nvidiaPackages.mkDriver {
+      version = "550.54.14";
+      sha256_64bit = "sha256-jEl/8c/HwxD7h1FJvDD6pP0m0iN7LLps0uiweAFXz+M=";
+      openSha256 = "sha256-mRUTEWVsbjq+psVe+kAT6MjyZuLkG2yRDxCMvDJRL1I=";
+      settingsSha256 = "sha256-m2rNASJp0i0Ez2OuqL+JpgEF0Yd8sYVCyrOoo/ln2a4=";
+      persistencedSha256 = "sha256-11tLSY8uUIl4X/roNnxf5yS2PQvHvoNjnd2CB67e870=";
+
+    };
+
   environment.systemPackages = with pkgs; [ ];
 
   hardware.bluetooth.enable = true;
