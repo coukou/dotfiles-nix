@@ -22,6 +22,9 @@ in
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     WLR_NO_HARDWARE_CURSORS = "1";
+
+    # https://github.com/hyprwm/Hyprland/issues/4523#issuecomment-1926460314
+    OGL_DEDICATED_HW_STATE_PER_CONTEXT = "ENABLE_ROBUST";
   };
 
   services.xserver.displayManager.session = [ ] ++ (if wm == "hyprland" then [
