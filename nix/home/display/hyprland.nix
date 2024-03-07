@@ -13,16 +13,10 @@ in
   imports = [
     ../programs/kitty.nix
     ../programs/waybar
-    inputs.ags.homeManagerModules.default
   ];
 
   home.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = 1;
-  };
-
-  programs.ags = {
-    enable = true;
-    extraPackages = with pkgs; [ ];
   };
 
   home.packages = with pkgs; [
