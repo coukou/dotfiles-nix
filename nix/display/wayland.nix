@@ -1,4 +1,4 @@
-{ config, pkgs, wm, ... }:
+{ config, pkgs, wm, gpu, lib, ... }:
 let
   greetImg = ../../wallpapers/greeter.png;
   regreet-override = pkgs.greetd.regreet.overrideAttrs (final: prev: {
@@ -19,13 +19,18 @@ in
   xdg.portal.wlr.enable = true;
   services.dbus.enable = true;
 
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
+  environment.sessionVariables = lib.mkMerge ([
+    {
+      NIXOS_OZONE_WL = "1";
+    }
+  ] ++ (if gpu == "nvidia" then [{
+
     WLR_NO_HARDWARE_CURSORS = "1";
 
     # https://github.com/hyprwm/Hyprland/issues/4523#issuecomment-1926460314
     OGL_DEDICATED_HW_STATE_PER_CONTEXT = "ENABLE_ROBUST";
-  };
+
+  }] else [ ]));
 
   services.xserver.displayManager.session = [ ] ++ (if wm == "hyprland" then [
     {

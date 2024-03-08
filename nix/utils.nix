@@ -21,6 +21,7 @@
   mkComputer =
     { machineConfig
     , users
+    , gpu
     , wm ? ""
     , extraModules ? [ ]
     , userConfigs ? [ ]
@@ -29,7 +30,7 @@
 
       # Arguments to pass to all modules
       specialArgs = {
-        inherit system inputs users self wm stateVersion;
+        inherit system inputs users self wm stateVersion gpu;
       };
       modules = [
         machineConfig
@@ -40,7 +41,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = { inherit inputs self stateVersion; };
+          home-manager.extraSpecialArgs = { inherit inputs self stateVersion gpu; };
           home-manager.users = builtins.listToAttrs (map
             (user: {
               name = user;

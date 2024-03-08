@@ -43,12 +43,14 @@
         desktop = utils.mkComputer {
           machineConfig = ./nix/machines/desktop.nix;
           wm = "hyprland";
+          gpu = "nvidia";
           users = [ "coukou" "coukou-work" ];
         };
 
         xps13 = utils.mkComputer {
           machineConfig = ./nix/machines/xps13.nix;
           wm = "hyprland";
+          gpu = "intel";
           users = [ "coukou" ];
         };
       };
