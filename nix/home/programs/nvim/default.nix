@@ -136,6 +136,12 @@
           config = toLuaFile ./lua/treesitter.lua;
         }
 
+        # Notification
+        {
+          plugin = nvim-notify;
+          config = toLuaFile ./lua/notify.lua;
+        }
+
         # Others
         neodev-nvim
         nvim-web-devicons
