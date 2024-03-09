@@ -134,6 +134,7 @@
         neodev-nvim
         nvim-web-devicons
         vim-nix
+        twilight-nvim
       ];
     };
 }
