@@ -124,6 +124,12 @@
           config = toLuaFile ./lua/lsp.lua;
         }
 
+        # whichkey
+        {
+          plugin = which-key-nvim;
+          config = toLuaFile ./lua/which-key.lua;
+        }
+
         # Treesitter
         {
           plugin = nvim-treesitter.withAllGrammars;
