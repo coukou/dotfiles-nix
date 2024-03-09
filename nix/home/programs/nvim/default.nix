@@ -1,34 +1,44 @@
-{ lib, config, pkgs, ... }:
+{ pkgs, ... }:
 {
   programs.neovim =
     let
       toLua = str: "lua << EOF\n${str}\nEOF\n";
       toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
+
+      lsp-progress = pkgs.vimUtils.buildVimPlugin {
+        pname = "lsp-progress";
+        version = "v1.0.9";
+        src = pkgs.fetchFromGitHub {
+          owner = "linrongbin16";
+          repo = "lsp-progress.nvim";
+          rev = "c336039f3b03176a7b2f0c585a0e78056769b681";
+          sha256 = "sha256-wCVh/cZ7E60G4R+b8qzb8t7vGEMRA+469jCPsiyNlKw=";
+        };
+        meta.homepage = "https://github.com/linrongbin16/lsp-progress.nvim";
+      };
     in
     {
       enable = true;
       vimAlias = true;
 
       extraPackages = with pkgs; [
-        xclip
-        wl-clipboard
+        ripgrep
 
         rust-analyzer
         lua-language-server
         nil
         nodePackages.typescript-language-server
         nodePackages."@astrojs/language-server"
-
-        stylua
         prettierd
         eslint_d
-        ripgrep
+        stylua
       ];
 
       extraConfig = ''
         colorscheme catppuccin
         set rnu
-      '';
+        '';
+
 
       plugins = with pkgs.vimPlugins; [
         {
@@ -40,11 +50,14 @@
           '';
         }
 
+        # Lualine
         {
           plugin = lualine-nvim;
           config = toLuaFile ./lua/lualine.lua;
         }
+        lsp-progress
 
+        # Git
         {
           plugin = gitsigns-nvim;
           config = toLua ''
@@ -52,31 +65,31 @@
           '';
         }
 
-        {
-          plugin = orgmode;
-          config = toLuaFile ./lua/orgmode.lua;
-        }
-
+        # File explorer
         {
           plugin = neo-tree-nvim;
           config = toLuaFile ./lua/neo-tree.lua;
         }
 
+        # Telescope
         {
           plugin = telescope-nvim;
           config = toLuaFile ./lua/telescope.lua;
         }
 
+        # Formatter
         {
           plugin = conform-nvim;
           config = toLuaFile ./lua/conform.lua;
         }
 
+        # Linter
         {
           plugin = nvim-lint;
           config = toLuaFile ./lua/nvim-lint.lua;
         }
 
+        # Indent utils
         {
           plugin = guess-indent-nvim;
           config = toLua ''
@@ -84,6 +97,7 @@
           '';
         }
 
+        # Comment
         {
           plugin = comment-nvim;
           config = toLua ''
@@ -91,14 +105,15 @@
           '';
         }
 
-        luasnip
-
-        # cmp
-        cmp_luasnip
+        # CMP
         {
           plugin = nvim-cmp;
           config = toLuaFile ./lua/cmp.lua;
         }
+
+        # Snippet
+        luasnip
+        cmp_luasnip
 
         # LSP
         cmp-nvim-lsp
