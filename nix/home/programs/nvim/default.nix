@@ -128,6 +128,12 @@
           config = toLuaFile ./lua/lsp.lua;
         }
 
+        # Diagnostics
+        {
+          plugin = trouble-nvim;
+          config = toLuaFile ./lua/trouble.lua;
+        }
+
         # whichkey
         {
           plugin = which-key-nvim;
