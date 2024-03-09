@@ -104,6 +104,10 @@
             require('Comment').setup()
           '';
         }
+        {
+          plugin = todo-comments-nvim;
+          config = toLuaFile ./lua/todo-comments.lua;
+        }
 
         # CMP
         {
