@@ -42,5 +42,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		bufmap("<leader>D", "Type definition", vim.lsp.buf.type_definition)
 
 		bufmap("K", "LSP Hover", vim.lsp.buf.hover)
+
+		require("lsp_signature").on_attach({
+			bind = true,
+			handler_opts = {
+				border = "rounded",
+			},
+		}, ev.bufnr)
 	end,
 })

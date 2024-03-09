@@ -111,6 +111,7 @@
           config = toLuaFile ./lua/cmp.lua;
         }
         lspkind-nvim
+        lsp_signature-nvim
 
         # Snippet
         luasnip
