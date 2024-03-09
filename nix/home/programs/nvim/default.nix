@@ -15,7 +15,7 @@
 
         rust-analyzer
         lua-language-server
-        rnix-lsp
+        nil
         nodePackages.typescript-language-server
         nodePackages."@astrojs/language-server"
 

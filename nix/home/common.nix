@@ -1,4 +1,4 @@
-{ config, self, stateVersion, pkgs, ... }: {
+{ stateVersion, pkgs, ... }: {
   imports = [ ];
 
   home.packages = with pkgs; [

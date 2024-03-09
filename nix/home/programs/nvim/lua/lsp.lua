@@ -24,25 +24,23 @@ lspconfig.lua_ls.setup({
 })
 
 -- Nix lsp
-lspconfig.rnix.setup({
-	capabilities = capabilities,
-})
+lspconfig.nil_ls.setup({})
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(ev)
-		local bufmap = function(keys, func)
-			vim.keymap.set("n", keys, func, { buffer = ev.buf })
+		local bufmap = function(keys, desc, func)
+			vim.keymap.set("n", keys, func, { buffer = ev.buf, desc = desc })
 		end
 
-		bufmap("<leader>r", vim.lsp.buf.rename)
-		bufmap("<leader>a", vim.lsp.buf.code_action)
+		bufmap("<leader>r", "LSP Rename", vim.lsp.buf.rename)
+		bufmap("<leader>a", "Code action", vim.lsp.buf.code_action)
 
-		bufmap("gd", vim.lsp.buf.definition)
-		bufmap("gD", vim.lsp.buf.declaration)
-		bufmap("gI", vim.lsp.buf.implementation)
-		bufmap("<leader>D", vim.lsp.buf.type_definition)
+		bufmap("gd", "Go to definition", vim.lsp.buf.definition)
+		bufmap("gD", "Go to declaration", vim.lsp.buf.declaration)
+		bufmap("gI", "Go to implementation", vim.lsp.buf.implementation)
+		bufmap("<leader>D", "Type definition", vim.lsp.buf.type_definition)
 
-		bufmap("K", vim.lsp.buf.hover)
+		bufmap("K", "LSP Hover", vim.lsp.buf.hover)
 	end,
 })
