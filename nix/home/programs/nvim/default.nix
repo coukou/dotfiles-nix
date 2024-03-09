@@ -110,6 +110,7 @@
           plugin = nvim-cmp;
           config = toLuaFile ./lua/cmp.lua;
         }
+        lspkind-nvim
 
         # Snippet
         luasnip
