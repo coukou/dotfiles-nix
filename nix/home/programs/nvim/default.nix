@@ -23,12 +23,6 @@
 
       extraPackages = with pkgs; [
         ripgrep
-
-        rust-analyzer
-        nodePackages.typescript-language-server
-        nodePackages."@astrojs/language-server"
-        prettierd
-        eslint_d
       ];
 
       extraConfig = ''
