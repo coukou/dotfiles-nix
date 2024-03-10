@@ -24,7 +24,15 @@ lspconfig.lua_ls.setup({
 })
 
 -- Nix lsp
-lspconfig.nil_ls.setup({})
+lspconfig.nil_ls.setup({
+	settings = {
+		["nil"] = {
+			formatting = {
+				command = { "nixpkgs-fmt" },
+			},
+		},
+	},
+})
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
