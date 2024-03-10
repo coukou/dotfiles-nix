@@ -25,19 +25,16 @@
         ripgrep
 
         rust-analyzer
-        lua-language-server
-        nil
         nodePackages.typescript-language-server
         nodePackages."@astrojs/language-server"
         prettierd
         eslint_d
-        stylua
       ];
 
       extraConfig = ''
         colorscheme catppuccin
         set rnu
-        '';
+      '';
 
 
       plugins = with pkgs.vimPlugins; [

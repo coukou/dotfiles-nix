@@ -2,7 +2,7 @@
   description = "My nix configuration";
 
   inputs =
-    rec {
+    {
       nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
       systems.url = "github:nix-systems/default";
@@ -23,7 +23,7 @@
       spicetify-nix.inputs.flake-utils.follows = "flake-utils";
     };
 
-  outputs = inputs @ { self, home-manager, nixpkgs, ... }:
+  outputs = inputs @ { self, home-manager, nixpkgs, flake-utils, ... }:
     let
       system = "x86_64-linux";
       stateVersion = "24.05";
@@ -38,7 +38,7 @@
           inherit inputs self home-manager nixpkgs system pkgs stateVersion;
         };
     in
-    rec {
+    {
       nixosConfigurations = {
         desktop = utils.mkComputer {
           machineConfig = ./nix/machines/desktop.nix;
