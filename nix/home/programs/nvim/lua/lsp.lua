@@ -6,16 +6,14 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 require("neodev").setup()
 
 local border = {
-	{
-		"╭",
-		"─",
-		"╮",
-		"│",
-		"╯",
-		"─",
-		"╰",
-		"│",
-	},
+	{ "╭", "FloatBorder" },
+	{ "─", "FloatBorder" },
+	{ "╮", "FloatBorder" },
+	{ "│", "FloatBorder" },
+	{ "╯", "FloatBorder" },
+	{ "─", "FloatBorder" },
+	{ "╰", "FloatBorder" },
+	{ "│", "FloatBorder" },
 }
 
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
