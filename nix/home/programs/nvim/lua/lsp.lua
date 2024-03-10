@@ -5,6 +5,26 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 require("neodev").setup()
 
+local border = {
+	{
+		"╭",
+		"─",
+		"╮",
+		"│",
+		"╯",
+		"─",
+		"╰",
+		"│",
+	},
+}
+
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+	opts = opts or {}
+	opts.border = opts.border or border
+	return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
 lspconfig.tsserver.setup({})
 lspconfig.rust_analyzer.setup({})
 lspconfig.astro.setup({})
