@@ -126,8 +126,7 @@ in
         bind = $mainMod, E, exec, $fileManager
         bind = $mainMod, V, togglefloating,
         bind = $mainMod, D, exec, $menu
-        bind = $mainMod, P, pseudo,
-        bind = $mainMod, J, togglesplit,
+        bind = $mainMod, P, pin
 
         # Screenshots bindings
         bind = $mainMod SHIFT CTRL, s, exec, wayshot --stdout | satty --filename - --early-exit --copy-command "${wlCopySattyScript}/bin/wl-copy-satty"
