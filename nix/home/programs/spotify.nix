@@ -1,20 +1,22 @@
-{ inputs, pkgs, ... }:
+{ pkgs, nixosWayland, ... }:
 let
-  spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
+  spotifyPkg =
+    if nixosWayland
+    then
+      pkgs.symlinkJoin
+        {
+          name = "spotify";
+          paths = [ pkgs.spotify ];
+          buildInputs = [ pkgs.makeWrapper ];
+          postBuild = ''
+            wrapProgram $out/bin/spotify --set NIXOS_OZONE_WL=1
+          '';
+        }
+    else
+      pkgs.spicetify-cli;
 in
 {
-  imports = [
-    inputs.spicetify-nix.homeManagerModule
+  home.packages = [
+    spotifyPkg
   ];
-
-  programs.spicetify = {
-    enable = true;
-
-    theme = spicePkgs.themes.catppuccin;
-
-    enabledExtensions = with spicePkgs.extensions; [
-      fullAppDisplay
-      hidePodcasts
-    ];
-  };
 }

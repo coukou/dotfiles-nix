@@ -1,10 +1,10 @@
-{ pkgs, ... }: {
+{ mkNativeWebapp, ... }: {
   home.packages = [
     (
-      pkgs.makeDesktopItem {
+      mkNativeWebapp {
         name = "gmail";
         desktopName = "GMail";
-        exec = "${pkgs.chromium}/bin/chromium --app=\"https://gmail.com/\"";
+        url = "https://gmail.com/";
       }
     )
   ];

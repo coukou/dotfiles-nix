@@ -1,10 +1,10 @@
-{ pkgs, ... }: {
+{ mkNativeWebapp, ... }: {
   home.packages = [
     (
-      pkgs.makeDesktopItem {
+      mkNativeWebapp {
         name = "notion";
         desktopName = "Notion";
-        exec = "${pkgs.chromium}/bin/chromium --app=\"https://www.notion.so/\"";
+        url = "https://www.notion.so/";
       }
     )
   ];

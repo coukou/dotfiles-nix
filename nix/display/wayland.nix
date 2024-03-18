@@ -1,4 +1,4 @@
-{ config, pkgs, wm, gpu, lib, ... }:
+{ config, pkgs, wm, gpu, lib, nixpkgs, ... }:
 let
   greetImg = ../../wallpapers/greeter.png;
   regreet-override = pkgs.greetd.regreet.overrideAttrs (final: prev: {
@@ -19,18 +19,25 @@ in
   xdg.portal.wlr.enable = true;
   services.dbus.enable = true;
 
-  environment.sessionVariables = lib.mkMerge ([
-    {
-      NIXOS_OZONE_WL = "1";
-    }
-  ] ++ (if gpu == "nvidia" then [{
-
-    WLR_NO_HARDWARE_CURSORS = "1";
-
-    # https://github.com/hyprwm/Hyprland/issues/4523#issuecomment-1926460314
-    OGL_DEDICATED_HW_STATE_PER_CONTEXT = "ENABLE_ROBUST";
-
-  }] else [ ]));
+  environment.sessionVariables = lib.mkMerge (
+    [
+    ] ++ (
+      if gpu == "nvidia" then [
+        {
+          WLR_NO_HARDWARE_CURSORS = "1";
+          LIBVA_DRIVER_NAME = "nvidia";
+          XDG_SESSION_TYPE = "wayland";
+          GBM_BACKEND = "nvidia-drm";
+          __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+        }
+      ] else [
+        {
+          # Set OZONE only if in non nvidia env, as I found xwayland is better on nvidia env
+          NIXOS_OZONE_WL = "1";
+        }
+      ]
+    )
+  );
 
   services.xserver.displayManager.session = [ ] ++ (if wm == "hyprland" then [
     {

@@ -18,6 +18,15 @@
     ] else [ ]);
   };
 
+  mkNativeWebapp = { url, name, desktopName }:
+    pkgs.makeDesktopItem {
+      name = name;
+      desktopName = desktopName;
+      exec = ''
+        ${pkgs.chromium}/bin/chromium --app="${url}"
+      '';
+    };
+
   mkComputer =
     { machineConfig
     , users
@@ -25,13 +34,19 @@
     , wm ? ""
     , extraModules ? [ ]
     , userConfigs ? [ ]
-    }: nixpkgs.lib.nixosSystem {
+    }:
+    let
+      windowServer = wms."${wm}";
+      nixosWayland = windowServer == "wayland";
+    in
+    nixpkgs.lib.nixosSystem {
       inherit system pkgs;
 
       # Arguments to pass to all modules
       specialArgs = {
-        inherit system inputs users self wm stateVersion gpu;
+        inherit system inputs users self wm stateVersion gpu nixpkgs;
       };
+
       modules = [
         machineConfig
 
@@ -39,9 +54,11 @@
 
         home-manager.nixosModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
+          home-manager. useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = { inherit inputs self stateVersion gpu; };
+          home-manager.extraSpecialArgs = {
+            inherit inputs self stateVersion gpu mkNativeWebapp nixosWayland;
+          };
           home-manager.users = builtins.listToAttrs (map
             (user: {
               name = user;
@@ -51,9 +68,8 @@
         }
       ] ++ extraModules ++ [
         ./common/fonts.nix
+        (./. + "/display/${windowServer}.nix")
 
-      ] ++ (if wms ? "${wm}" then [
-        (./. + ("/display/" + wms."${wm}") + ".nix")
-      ] else [ ]);
+      ];
     };
 }

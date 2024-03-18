@@ -14,13 +14,9 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      hyprland.url = "github:hyprwm/Hyprland/v0.35.0";
+      hyprland.url = "github:hyprwm/Hyprland/v0.37.1";
       hyprland.inputs.nixpkgs.follows = "nixpkgs";
       hyprland.inputs.systems.follows = "systems";
-
-      spicetify-nix.url = "github:the-argus/spicetify-nix";
-      spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
-      spicetify-nix.inputs.flake-utils.follows = "flake-utils";
     };
 
   outputs = inputs @ { self, home-manager, nixpkgs, flake-utils, ... }:
