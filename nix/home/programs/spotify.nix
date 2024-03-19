@@ -13,7 +13,7 @@ let
           '';
         }
     else
-      pkgs.spicetify-cli;
+      pkgs.spotify;
 in
 {
   home.packages = [
