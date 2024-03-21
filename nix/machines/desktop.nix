@@ -22,9 +22,30 @@
       persistencedSha256 = "sha256-11tLSY8uUIl4X/roNnxf5yS2PQvHvoNjnd2CB67e870=";
     };
 
+  hardware.nvidia.prime = {
+    offload = {
+      enable = true;
+      enableOffloadCmd = true;
+    };
+
+    nvidiaBusId = "PCI:1:0:0";
+    amdgpuBusId = "PCI:10:0:0";
+  };
+
   environment.systemPackages = with pkgs; [ ];
 
   hardware.bluetooth.enable = true;
+
+  environment.sessionVariables = {
+    # Card0 : AMD iGPU
+    # Card1 : NVIDIA RTX 4070 SUPER
+    # Set priority to AMD iGPU for wayland sessions
+    WLR_DRM_DEVICES = "/dev/dri/card0:/dev/dri/card1";
+
+    WLR_NO_HARDWARE_CURSORS = "1";
+    LIBVA_DRIVER_NAME = "nvidia";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+  };
 
   # specific programs
   programs._1password.enable = true;

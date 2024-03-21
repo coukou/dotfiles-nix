@@ -30,21 +30,19 @@
   mkComputer =
     { machineConfig
     , users
-    , gpu
     , wm ? ""
     , extraModules ? [ ]
     , userConfigs ? [ ]
     }:
     let
       windowServer = wms."${wm}";
-      nixosWayland = windowServer == "wayland";
     in
     nixpkgs.lib.nixosSystem {
       inherit system pkgs;
 
       # Arguments to pass to all modules
       specialArgs = {
-        inherit system inputs users self wm stateVersion gpu nixpkgs;
+        inherit system inputs users self wm stateVersion nixpkgs;
       };
 
       modules = [
@@ -57,7 +55,7 @@
           home-manager. useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = {
-            inherit inputs self stateVersion gpu mkNativeWebapp nixosWayland;
+            inherit inputs self stateVersion mkNativeWebapp;
           };
           home-manager.users = builtins.listToAttrs (map
             (user: {

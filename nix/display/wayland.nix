@@ -1,4 +1,4 @@
-{ config, pkgs, wm, gpu, lib, nixpkgs, ... }:
+{ config, pkgs, wm, lib, ... }:
 let
   greetImg = ../../wallpapers/greeter.png;
   regreet-override = pkgs.greetd.regreet.overrideAttrs (final: prev: {
@@ -19,52 +19,14 @@ in
   xdg.portal.wlr.enable = true;
   services.dbus.enable = true;
 
-  environment.sessionVariables = lib.mkMerge (
-    [
-    ] ++ (
-      if gpu == "nvidia" then [
-        {
-          WLR_NO_HARDWARE_CURSORS = "1";
-          LIBVA_DRIVER_NAME = "nvidia";
-          XDG_SESSION_TYPE = "wayland";
-          GBM_BACKEND = "nvidia-drm";
-          __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-        }
-      ] else [
-        {
-          # Set OZONE only if in non nvidia env, as I found xwayland is better on nvidia env
-          NIXOS_OZONE_WL = "1";
-        }
-      ]
-    )
-  );
-
-  services.xserver.displayManager.session = [ ] ++ (if wm == "hyprland" then [
+  environment.sessionVariables = lib.mkMerge [
     {
-      manage = "desktop";
-      name = "hyprland";
-      start = ''
-        Hyprland &
-        waitPID=$!
-      '';
+      XDG_SESSION_TYPE = "wayland";
+      NIXOS_OZONE_WL = "1";
     }
-  ] else [ ]);
+  ];
 
-  services.greetd = {
+  services.xserver.displayManager.gdm = {
     enable = true;
-  };
-
-  programs.regreet = {
-    enable = true;
-    package = regreet-override;
-    settings = {
-      GTK = {
-        application_prefer_dark_theme = true;
-      };
-
-      background = {
-        path = greetImg;
-      };
-    };
   };
 }
