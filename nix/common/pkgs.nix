@@ -8,9 +8,13 @@
     # Nix 
     nil
     nixpkgs-fmt
+
     # Lua
     lua-language-server
     stylua
+
+    # dev
+    devenv
   ];
 
   environment.variables.EDITOR = "nvim";
