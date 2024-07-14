@@ -55,7 +55,7 @@
           home-manager. useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = {
-            inherit inputs self stateVersion mkNativeWebapp;
+            inherit inputs self stateVersion mkNativeWebapp system;
           };
           home-manager.users = builtins.listToAttrs (map
             (user: {

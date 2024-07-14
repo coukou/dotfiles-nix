@@ -15,6 +15,8 @@
 
     # dev
     devenv
+
+    nvim
   ];
 
   environment.variables.EDITOR = "nvim";

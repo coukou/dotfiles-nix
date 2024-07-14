@@ -1,5 +1,4 @@
-{ inputs, self, pkgs, ... }: {
-
+{ ... }: {
   imports = [
     ../common.nix
     ../programs/fish.nix
@@ -9,8 +8,6 @@
     ../programs/notion.nix
     ../programs/vscode.nix
     ../programs/slack.nix
-    ../programs/nvim
+    ../programs/nvim.nix
   ];
-
-  home.packages = with pkgs; [ ];
 }

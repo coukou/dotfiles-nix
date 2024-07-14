@@ -17,6 +17,8 @@
       hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
       hyprland.inputs.nixpkgs.follows = "nixpkgs";
       hyprland.inputs.systems.follows = "systems";
+
+      my-nixvim.url = "path:./nixvim";
     };
 
   outputs = inputs @ { self, home-manager, nixpkgs, flake-utils, ... }:
