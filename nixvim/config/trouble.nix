@@ -1,0 +1,5 @@
+{
+  plugins.troube = {
+    enable = true;
+  };
+}
