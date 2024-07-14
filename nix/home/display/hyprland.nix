@@ -26,7 +26,7 @@ in
     firefox
 
     # Filemanager
-    gnome.nautilus
+    nautilus
 
     # sounds
     pavucontrol
