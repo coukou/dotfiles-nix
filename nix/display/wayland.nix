@@ -7,7 +7,7 @@ let
 in
 {
   imports = [ ];
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
