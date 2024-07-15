@@ -18,10 +18,10 @@
       hyprland.inputs.nixpkgs.follows = "nixpkgs";
       hyprland.inputs.systems.follows = "systems";
 
-      my-nixvim.url = "path:./nixvim";
+      nixvim.url = "github:nix-community/nixvim";
     };
 
-  outputs = inputs @ { self, home-manager, nixpkgs, flake-utils, ... }:
+  outputs = inputs @ { self, home-manager, nixpkgs, flake-utils, nixvim, ... }:
     let
       system = "x86_64-linux";
       stateVersion = "24.05";
@@ -35,8 +35,25 @@
         {
           inherit inputs self home-manager nixpkgs system pkgs stateVersion;
         };
+
+      nvim = let
+          nixvimLib = nixvim.lib.${system};
+          nixvim' = nixvim.legacyPackages.${system};
+          nixvimModule = {
+            inherit pkgs;
+            module = import ./nixvim/config;
+            extraSpecialArgs = {
+              toLua = str: "lua << EOF\n${str}\nEOF\n";
+            };
+          };
+      in
+        nixvim'.makeNixvimWithModule nixvimModule;
     in
     {
+      packages = {
+        inherit nvim;
+      };
+
       nixosConfigurations = {
         desktop = utils.mkComputer {
           machineConfig = ./nix/machines/desktop.nix;

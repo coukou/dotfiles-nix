@@ -1,4 +1,4 @@
-{ pkgs, lib, inputs, system, ... }: {
+{ pkgs, lib, inputs, system, self, ... }: {
   environment.systemPackages = with pkgs; [
     git
     fish
@@ -15,7 +15,7 @@
     # dev
     devenv
 
-    (inputs.my-nixvim.packages.${system}.default)
+    (self.packages.nvim)
   ];
 
   environment.variables.EDITOR = "nvim";
