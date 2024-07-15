@@ -36,7 +36,8 @@
           inherit inputs self home-manager nixpkgs system pkgs stateVersion;
         };
 
-      nvim = let
+      nvim =
+        let
           nixvimLib = nixvim.lib.${system};
           nixvim' = nixvim.legacyPackages.${system};
           nixvimModule = {
@@ -46,7 +47,7 @@
               toLua = str: "lua << EOF\n${str}\nEOF\n";
             };
           };
-      in
+        in
         nixvim'.makeNixvimWithModule nixvimModule;
     in
     {
