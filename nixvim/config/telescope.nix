@@ -10,6 +10,7 @@
     };
 
     keymaps = {
+      "<leader>fd" = "diagnostics";
       "<leader>ff" = "find_files";
       "<leader>fb" = "buffers";
       "<leader>fw" = "live_grep";

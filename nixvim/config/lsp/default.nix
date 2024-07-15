@@ -6,6 +6,7 @@
     ./lspkind.nix
     ./lsp-signature.nix
     ./action-preview.nix
+    ./workspace-diagnostics.nix
   ];
 
   plugins.cmp-nvim-lsp = {
