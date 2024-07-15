@@ -1,10 +1,9 @@
 { helpers, ... }:
 {
   plugins.cmp = {
-    enable = true;
+    enable = false;
 
     settings = {
-
       sources = [
         { name = "nvim_lsp"; }
       ];
@@ -12,6 +11,8 @@
       mapping = {
         "<C-n>" = "cmp.mapping.select_next_item()";
         "<C-p>" = "cmp.mapping.select_prev_item()";
+        "<Up>" = "cmp.mapping.select_prev_item()";
+        "<Down>" = "cmp.mapping.select_next_item()";
         "<C-[>" = "cmp.mapping.scroll_docs(-4)";
         "<C-]>" = "cmp.mapping.scroll_docs(4)";
         "<C-Space>" = "cmp.mapping.complete({})";
@@ -21,7 +22,7 @@
             select = true,
           })
         '';
-        "<Tab>" = ''
+        "<Tab>" = helpers.mkRaw ''
           cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
@@ -30,7 +31,7 @@
             end
           end, { "i", "s" })
         '';
-        "<S-Tab>" = ''
+        "<S-Tab>" = helpers.mkRaw ''
           cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_prev_item()
@@ -38,6 +39,11 @@
               fallback()
             end
           end, { "i", "s" })
+        '';
+        "<Esc>" = helpers.mkRaw ''
+          cmp.mapping({
+            i = cmp.mapping.abort()
+          })
         '';
       };
 
