@@ -1,5 +1,10 @@
-{ helpers, ... }:
+{ helpers, pkgs, ... }:
 {
+
+  extraPackages = with pkgs; [
+    prettierd
+  ];
+
   plugins.conform-nvim = {
     enable = true;
     formattersByFt = {
@@ -9,8 +14,8 @@
       typescriptreact = [ "prettierd" ];
     };
     formatAfterSave = helpers.toLuaObject {
-      timeoutMs = 500;
-      lspFallback = true;
+      timeout_ms = 500;
+      lsp_format = "fallback";
     };
   };
 }
