@@ -5,10 +5,12 @@
     ./servers
     ./lspkind.nix
     ./lsp-signature.nix
+    ./action-preview.nix
   ];
 
   plugins.cmp-nvim-lsp = {
     enable = true;
+
   };
 
   plugins.lsp = {
@@ -45,6 +47,13 @@
         key = "<leader>D";
         action = helpers.mkRaw "vim.lsp.buf.type_definition";
         options.desc = "LSP type definition";
+      }
+      {
+        key = "<leader>ih";
+        action = helpers.mkRaw "function()
+          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+        end";
+        options.desc = "Toggle inlay hint";
       }
     ];
 
