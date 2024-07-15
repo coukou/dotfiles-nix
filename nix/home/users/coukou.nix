@@ -9,6 +9,5 @@
     ../programs/notion.nix
     ../programs/vscode.nix
     ../programs/slack.nix
-    ../programs/nvim.nix
   ];
 }
