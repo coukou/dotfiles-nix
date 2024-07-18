@@ -6,7 +6,7 @@ let
     ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
   '';
 
-  wallpaper = ../../../wallpapers/1.png;
+  wallpaper = ../../../wallpapers/4.jpg;
 in
 {
   imports = [
@@ -81,7 +81,7 @@ in
         blur {
           enabled = true
           size = 2
-          passes = 4
+          passes = 8
 
           vibrancy = 0.16574
         }
