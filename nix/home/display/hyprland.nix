@@ -6,7 +6,7 @@ let
     ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
   '';
 
-  wallpaper = ../../../wallpapers/4.jpg;
+  wallpaper = ../../../wallpapers/1.jpg;
 in
 {
   imports = [
