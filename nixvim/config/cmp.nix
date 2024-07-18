@@ -1,7 +1,7 @@
 { helpers, ... }:
 {
   plugins.cmp = {
-    enable = false;
+    enable = true;
 
     settings = {
       sources = [
