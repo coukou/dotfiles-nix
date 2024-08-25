@@ -51,7 +51,9 @@
     in
     {
       packages = {
-        inherit nvim;
+        x86_64-linux = {
+          inherit nvim;
+        };
       };
 
       nixosConfigurations = {
