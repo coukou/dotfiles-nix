@@ -1,5 +1,4 @@
-{ config
-, self
+{ self
 , pkgs
 , users
 , stateVersion
@@ -48,6 +47,7 @@
   };
 
   programs.fish.enable = true;
+  hardware.keyboard.zsa.enable = true;
 
   system.stateVersion = stateVersion;
 }

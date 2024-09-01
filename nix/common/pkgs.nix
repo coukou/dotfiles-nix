@@ -15,7 +15,7 @@
     # dev
     devenv
 
-    (self.packages.nvim)
+    (self.packages."${system}".nvim)
   ];
 
   environment.variables.EDITOR = "nvim";

@@ -1,10 +1,4 @@
-{ config, pkgs, wm, lib, ... }:
-let
-  greetImg = ../../wallpapers/greeter.png;
-  regreet-override = pkgs.greetd.regreet.overrideAttrs (final: prev: {
-    SESSION_DIRS = "${config.services.xserver.displayManager.sessionData.desktops}/share";
-  });
-in
+{ pkgs, lib, ... }:
 {
   imports = [ ];
   hardware.graphics.enable = true;
@@ -41,8 +35,4 @@ in
       XDG_SESSION_TYPE = "wayland";
     }
   ];
-
-  services.xserver.displayManager.gdm = {
-    enable = true;
-  };
 }

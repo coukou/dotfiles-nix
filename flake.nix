@@ -19,6 +19,11 @@
       hyprland.inputs.systems.follows = "systems";
 
       nixvim.url = "github:nix-community/nixvim";
+
+      hy3 = {
+        url = "github:outfoxxed/hy3";
+        inputs.hyprland.follows = "hyprland";
+      };
     };
 
   outputs = inputs @ { self, home-manager, nixpkgs, flake-utils, nixvim, ... }:

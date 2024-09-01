@@ -10,6 +10,11 @@
     nix-direnv.enable = true;
   };
 
+  home.pointerCursor = {
+    name = "Numix-Cursor";
+    package = pkgs.numix-cursor-theme;
+  };
+
   gtk = {
     enable = true;
 

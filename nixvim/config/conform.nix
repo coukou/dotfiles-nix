@@ -7,15 +7,19 @@
 
   plugins.conform-nvim = {
     enable = true;
-    formattersByFt = {
-      lua = [ "stylua" ];
-      javascript = [ "prettierd" ];
-      typescript = [ "prettierd" ];
-      typescriptreact = [ "prettierd" ];
-    };
-    formatAfterSave = helpers.toLuaObject {
-      timeout_ms = 500;
-      lsp_format = "fallback";
+
+    settings = {
+      formatters_by_ft = {
+        lua = [ "stylua" ];
+        javascript = [ "prettierd" ];
+        typescript = [ "prettierd" ];
+        typescriptreact = [ "prettierd" ];
+      };
+
+      format_after_save = helpers.toLuaObject {
+        timeout_ms = 500;
+        lsp_format = "fallback";
+      };
     };
   };
 }

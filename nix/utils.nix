@@ -52,7 +52,7 @@
 
         home-manager.nixosModules.home-manager
         {
-          home-manager. useGlobalPkgs = true;
+          home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = {
             inherit inputs self stateVersion mkNativeWebapp system;
@@ -64,6 +64,7 @@
             })
             users);
         }
+
       ] ++ extraModules ++ [
         ./common/fonts.nix
         (./. + "/display/${windowServer}.nix")
