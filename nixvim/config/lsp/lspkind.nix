@@ -1,5 +1,0 @@
-{
-  plugins.lspkind = {
-    enable = true;
-  };
-}

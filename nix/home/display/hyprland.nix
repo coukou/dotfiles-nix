@@ -47,10 +47,12 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     package = (inputs.hyprland.packages."x86_64-linux".hyprland.override { });
-    plugins = [ inputs.hy3.packages.x86_64-linux.hy3 ];
+    portalPackage = null;
+
+
     extraConfig = ''
       $menu = wofi --show drun
-      $browser = firefox
+      $browser = zen
       $terminal = kitty
       $fileManager = nautilus
 
@@ -66,33 +68,36 @@ in
 
       general {
         gaps_in = 4
-        gaps_out = 4
+        gaps_out = 10
         border_size = 2
 
-        col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
-        col.inactive_border = rgba(595959aa)
+        col.active_border = rgba(8241f2dd)
+        col.inactive_border = rgba(ffffff20)
 
-        layout = hy3
-        # layout = dwindle
+        layout = dwindle
       }
+
+      windowrulev2 = bordercolor rgb(a541f2), fullscreen:1
 
       decoration {
         # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-        rounding = 0
+        rounding = 4
 
         blur {
           enabled = true
           size = 2
           passes = 8
-
           vibrancy = 0.16574
         }
 
-        drop_shadow = true
-        shadow_range = 4
-        shadow_render_power = 3
-        col.shadow = rgba(1a1a1aee)
+        shadow {
+          enabled = true
+          range = 4
+          render_power = 3
+          color = rgba(1a1a1aee)
+        }
+
       }
 
       animations {
@@ -118,39 +123,29 @@ in
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
       bind = $mainMod, Return, exec, $terminal
       bind = $mainMod, B, exec, $browser
-      bind = $mainMod, F, fullscreen,
+      bind = $mainMod, F, fullscreen, 1
+      bind = $mainMod SHIFT, F, fullscreen, 0
       bind = $mainMod, Q, killactive,
       bind = $mainMod, E, exec, $fileManager
       bind = $mainMod, Space, togglefloating
       bind = $mainMod, D, exec, $menu
       bind = $mainMod, P, pin
-      bind = $mainMod, G, hy3:makegroup, tab
-      bind = $mainMod, H, hy3:makegroup, h
-      bind = $mainMod, V, hy3:makegroup, v
 
       # Screenshots bindings
       bind = $mainMod SHIFT CTRL, s, exec, wayshot --stdout | satty --filename - --early-exit --copy-command "${wlCopySattyScript}/bin/wl-copy-satty"
       bind = $mainMod CTRL, s, exec, wayshot --stdout -s "$(slurp)" | satty --filename - --early-exit --copy-command "${wlCopySattyScript}/bin/wl-copy-satty"
 
       # Move focus with mainMod + arrow keys
-      # bind = $mainMod, left, movefocus, l
-      # bind = $mainMod, right, movefocus, r
-      # bind = $mainMod, up, movefocus, u
-      # bind = $mainMod, down, movefocus, d
-      bind = $mainMod, left, hy3:movefocus, l
-      bind = $mainMod, right, hy3:movefocus, r
-      bind = $mainMod, up, hy3:movefocus, u
-      bind = $mainMod, down, hy3:movefocus, d
+      bind = $mainMod, left, movefocus, l
+      bind = $mainMod, right, movefocus, r
+      bind = $mainMod, up, movefocus, u
+      bind = $mainMod, down, movefocus, d
 
       # Move window with mainMod + SHIFT + arrow keys
-      # bind = $mainMod SHIFT, left, movewindow, l
-      # bind = $mainMod SHIFT, right, movewindow, r
-      # bind = $mainMod SHIFT, up, movewindow, u
-      # bind = $mainMod SHIFT, down, movewindow, d
-      bind = $mainMod SHIFT, left, hy3:movewindow, l
-      bind = $mainMod SHIFT, right, hy3:movewindow, r
-      bind = $mainMod SHIFT, up, hy3:movewindow, u
-      bind = $mainMod SHIFT, down, hy3:movewindow, d
+      bind = $mainMod SHIFT, left, movewindow, l
+      bind = $mainMod SHIFT, right, movewindow, r
+      bind = $mainMod SHIFT, up, movewindow, u
+      bind = $mainMod SHIFT, down, movewindow, d
 
       # Switch workspaces with mainMod + [0-9]
       bind = $mainMod, 1, workspace, 1
@@ -206,71 +201,9 @@ in
       binde=SHIFT,up,resizeactive,0 -50
       binde=SHIFT,down,resizeactive,0 50
 
-      bind=,RETURN,submap,reset 
-      bind=,ESCAPE,submap,reset 
+      bind=,RETURN,submap,reset
+      bind=,ESCAPE,submap,reset
       submap=reset
-
-      plugin {
-        hy3 {
-          # disable gaps when only one window is onscreen
-          # 0 - always show gaps
-          # 1 - hide gaps with a single window onscreen
-          # 2 - 1 but also show the window border
-          no_gaps_when_only = 0
-
-          # policy controlling what happens when a node is removed from a group,
-          # leaving only a group
-          # 0 = remove the nested group
-          # 1 = keep the nested group
-          # 2 = keep the nested group only if its parent is a tab group
-          node_collapse_policy = 0
-
-          # tab group settings
-          tabs {
-            # height of the tab bar
-            height = 20 # default: 15
-
-            # padding between the tab bar and its focused node
-            padding = 0 # default: 5
-
-            # the tab bar should animate in/out from the top instead of below the window
-            # from_top = <bool> # default: false
-
-            # rounding of tab bar corners
-            rounding = 0 # default: 3
-
-            # render the window title on the bar
-            render_text = true # default: true
-
-            # font to render the window title with
-            text_font = <string> # default: Sans
-
-            # height of the window title
-            text_height = 12 # default: 8
-
-            # left padding of the window title
-            # text_padding = <int> # default: 3
-
-            # active tab bar segment color
-            # col.active = <color> # default: 0xff32b4ff
-
-            # urgent tab bar segment color
-            # col.urgent = <color> # default: 0xffff4f4f
-
-            # inactive tab bar segment color
-            # col.inactive = <color> # default: 0x80808080
-
-            # active tab bar text color
-            # col.text.active = <color> # default: 0xff000000
-
-            # urgent tab bar text color
-            # col.text.urgent = <color> # default: 0xff000000
-
-            # inactive tab bar text color
-            # col.text.inactive = <color> # default: 0xff000000
-          }
-        }
-      }
     '';
   };
 }

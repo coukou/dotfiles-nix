@@ -2,6 +2,7 @@
 , pkgs
 , users
 , stateVersion
+, config
 , ...
 }: {
   imports = [
@@ -36,7 +37,7 @@
         value = {
           isNormalUser = true;
           shell = pkgs.fish;
-          extraGroups = [ "wheel" "tty" "audio" "video" "docker" ];
+          extraGroups = [ "wheel" "tty" "audio" "video" "docker" "kvm" ];
         };
       })
       users

@@ -15,7 +15,8 @@
     # dev
     devenv
 
-    (self.packages."${system}".nvim)
+    neovim
+    tmux
   ];
 
   environment.variables.EDITOR = "nvim";

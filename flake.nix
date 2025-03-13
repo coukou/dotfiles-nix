@@ -18,49 +18,33 @@
       hyprland.inputs.nixpkgs.follows = "nixpkgs";
       hyprland.inputs.systems.follows = "systems";
 
-      nixvim.url = "github:nix-community/nixvim";
-
-      hy3 = {
-        url = "github:outfoxxed/hy3";
-        inputs.hyprland.follows = "hyprland";
-      };
+      nixvim.url = "git+file:///home/coukou/github/coukou/nixvim";
+      zen-browser.url = "github:0xc000022070/zen-browser-flake";
     };
 
   outputs = inputs @ { self, home-manager, nixpkgs, flake-utils, nixvim, ... }:
     let
       system = "x86_64-linux";
-      stateVersion = "24.05";
+      stateVersion = "24.11";
 
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
+
+        overlays = [
+          (final: prev: {
+            neovim = inputs.nixvim.packages.${pkgs.system}.default;
+          })
+        ];
       };
 
-      utils = import ./nix/utils.nix
+      utils = import
+        ./nix/utils.nix
         {
           inherit inputs self home-manager nixpkgs system pkgs stateVersion;
         };
-
-      nvim =
-        let
-          nixvim' = nixvim.legacyPackages.${system};
-          nixvimModule = {
-            inherit pkgs;
-            module = import ./nixvim/config;
-            extraSpecialArgs = {
-              toLua = str: "lua << EOF\n${str}\nEOF\n";
-            };
-          };
-        in
-        nixvim'.makeNixvimWithModule nixvimModule;
     in
     {
-      packages = {
-        x86_64-linux = {
-          inherit nvim;
-        };
-      };
-
       nixosConfigurations = {
         desktop = utils.mkComputer {
           machineConfig = ./nix/machines/desktop.nix;

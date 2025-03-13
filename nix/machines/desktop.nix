@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ config, pkgs, ... }: {
   imports = [
     ./hardware/desktop.nix
   ];
@@ -34,6 +34,7 @@
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "nvidia";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    GBM_BACKEND = "nvidia-drm";
   };
 
   # specific programs
@@ -44,7 +45,6 @@
 
   security.polkit.enable = true;
 
-  # enable docker
   virtualisation.docker = {
     enable = true;
     rootless = {
