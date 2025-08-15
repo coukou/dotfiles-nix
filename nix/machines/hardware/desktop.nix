@@ -41,7 +41,13 @@
   ];
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 3000 ];
+    allowedTCPPorts = [
+      3000
+      5037
+    ];
+    allowedTCPPortRanges = [
+      { from = 8000; to = 8100; }
+    ];
   };
   # networking.interfaces.enp7s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp6s0.useDHCP = lib.mkDefault true;

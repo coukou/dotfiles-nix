@@ -1,4 +1,4 @@
-{ pkgs, lib, inputs, ... }:
+{ pkgs, lib, ... }:
 {
   imports = [ ];
   hardware.graphics.enable = true;
@@ -25,6 +25,7 @@
       common.default = [ "hyprland" "gtk" ];
     };
     extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
       xdg-desktop-portal-gtk
     ];
   };
@@ -32,7 +33,6 @@
   environment.sessionVariables = lib.mkMerge [
     {
       XDG_SESSION_TYPE = "wayland";
-      NIXOS_OZONE_WL = "1";
     }
   ];
 }

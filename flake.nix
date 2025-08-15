@@ -18,11 +18,20 @@
       hyprland.inputs.nixpkgs.follows = "nixpkgs";
       hyprland.inputs.systems.follows = "systems";
 
-      nixvim.url = "git+file:///home/coukou/github/coukou/nixvim";
-      zen-browser.url = "github:0xc000022070/zen-browser-flake";
+      zen-browser.url = "github:youwen5/zen-browser-flake?ref=18d6cd2f5a9cd1527d478d4f716e9b9ee6fb6cbb";
+      zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+
+      nixvim.url = "github:coukou/nixvim";
     };
 
-  outputs = inputs @ { self, home-manager, nixpkgs, flake-utils, nixvim, ... }:
+  outputs =
+    inputs @ { self
+    , home-manager
+    , nixpkgs
+    , flake-utils
+    , nixvim
+    , ...
+    }:
     let
       system = "x86_64-linux";
       stateVersion = "24.11";

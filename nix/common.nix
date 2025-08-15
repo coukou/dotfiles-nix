@@ -2,7 +2,6 @@
 , pkgs
 , users
 , stateVersion
-, config
 , ...
 }: {
   imports = [

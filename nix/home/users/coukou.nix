@@ -17,5 +17,6 @@
     ../programs/zed-editor.nix
     ../programs/streamlink.nix
     ../programs/lazygit.nix
+    ../programs/idea.nix
   ];
 }

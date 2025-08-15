@@ -11,6 +11,7 @@ in
 {
   imports = [
     ../programs/kitty.nix
+    ../programs/ghostty.nix
     ../programs/waybar
   ];
 
@@ -49,11 +50,10 @@ in
     package = (inputs.hyprland.packages."x86_64-linux".hyprland.override { });
     portalPackage = null;
 
-
     extraConfig = ''
       $menu = wofi --show drun
       $browser = zen
-      $terminal = kitty
+      $terminal = ghostty
       $fileManager = nautilus
 
       exec-once = swww init
@@ -61,7 +61,7 @@ in
 
       exec = sleep 1 && swww img ${wallpaper}
 
-      monitor=,highrr,auto,1,vrr,1
+      monitor = ,highrr,auto,1,vrr,1
 
       exec-once = waybar
       blurls = waybar
@@ -78,6 +78,7 @@ in
       }
 
       windowrulev2 = bordercolor rgb(a541f2), fullscreen:1
+      windowrulev2 = noinitialfocus,class:jetbrains-idea-ce,title:^win(.*)
 
       decoration {
         # See https://wiki.hyprland.org/Configuring/Variables/ for more

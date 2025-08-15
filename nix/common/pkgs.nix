@@ -1,4 +1,4 @@
-{ pkgs, lib, inputs, system, self, ... }: {
+{ pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     git
     fish
@@ -11,9 +11,6 @@
     # Lua
     lua-language-server
     stylua
-
-    # dev
-    devenv
 
     neovim
     tmux
