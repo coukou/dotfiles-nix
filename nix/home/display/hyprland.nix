@@ -102,7 +102,7 @@ in
       }
 
       animations {
-        enabled = true
+        enabled = false
 
         bezier = myBezier, 0.05, 0.9, 0.1, 1.0
 
