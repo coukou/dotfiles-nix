@@ -14,6 +14,7 @@
 
     neovim
     tmux
+    devenv
   ];
 
   environment.variables.EDITOR = "nvim";
