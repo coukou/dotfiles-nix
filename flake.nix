@@ -18,7 +18,7 @@
       hyprland.inputs.nixpkgs.follows = "nixpkgs";
       hyprland.inputs.systems.follows = "systems";
 
-      zen-browser.url = "github:youwen5/zen-browser-flake?ref=18d6cd2f5a9cd1527d478d4f716e9b9ee6fb6cbb";
+      zen-browser.url = "github:youwen5/zen-browser-flake?ref=f2f8aff94529e763665b807bad23396aed9d1fe8";
       zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
       nixvim.url = "github:coukou/nixvim";
