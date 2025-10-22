@@ -13,7 +13,6 @@
     stylua
 
     neovim
-    tmux
     devenv
   ];
 

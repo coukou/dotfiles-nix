@@ -18,5 +18,6 @@
     ../programs/streamlink.nix
     ../programs/lazygit.nix
     ../programs/idea.nix
+    ../programs/tmux.nix
   ];
 }

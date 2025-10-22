@@ -14,5 +14,6 @@
     ../programs/android-studio.nix
     ../programs/zed-editor.nix
     ../programs/lazygit.nix
+    ../programs/tmux.nix
   ];
 }
