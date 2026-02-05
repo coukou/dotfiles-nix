@@ -77,8 +77,15 @@ in
         layout = dwindle
       }
 
-      windowrulev2 = bordercolor rgb(a541f2), fullscreen:1
-      windowrulev2 = noinitialfocus,class:jetbrains-idea-ce,title:^win(.*)
+      windowrule = match:fullscreen_state_internal 1, border_color rgb(a541f2)
+
+      windowrule {
+        name = fix-idea-focus-issue
+        match:title = ^win(.*)
+        match:class = jetbrains-idea-ce
+
+        no_initial_focus = on
+      }
 
       decoration {
         # See https://wiki.hyprland.org/Configuring/Variables/ for more

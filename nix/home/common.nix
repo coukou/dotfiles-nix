@@ -15,7 +15,7 @@
     package = pkgs.numix-cursor-theme;
   };
 
-  nixGL.vulkan.enable = true;
+  targets.genericLinux.nixGL.vulkan.enable = true;
 
   gtk = {
     enable = true;
