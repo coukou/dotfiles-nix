@@ -3,8 +3,11 @@
     ./hardware/xps13.nix
   ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+    timeout = 30;
+  };
 
   networking.hostName = "coukou";
   i18n.defaultLocale = "en_US.UTF-8";
