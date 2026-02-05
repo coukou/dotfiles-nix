@@ -15,5 +15,6 @@
     ../programs/zed-editor.nix
     ../programs/lazygit.nix
     ../programs/tmux.nix
+    ../programs/ollama.nix
   ];
 }

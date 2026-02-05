@@ -19,5 +19,6 @@
     ../programs/lazygit.nix
     ../programs/idea.nix
     ../programs/tmux.nix
+    ../programs/ollama.nix
   ];
 }
