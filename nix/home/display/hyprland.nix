@@ -62,6 +62,7 @@ in
       $opacity = 0.95
 
       exec-once = swaync
+      exec-once = sleep 2 && 1password --silent
 
       monitor = ,highrr,auto,1,vrr,1
 
@@ -70,8 +71,8 @@ in
         gaps_out = 10
         border_size = 2
 
-        col.active_border = rgba(8241f2dd)
-        col.inactive_border = rgba(ffffff20)
+        col.active_border = rgb(cba6f7)
+        col.inactive_border = rgb(11111b)
 
         layout = dwindle
       }
@@ -89,7 +90,7 @@ in
         ignore_alpha = $minOpacity
       }
 
-      windowrule = match:fullscreen_state_internal 1, border_color rgb(a541f2)
+      windowrule = match:fullscreen_state_internal 1, border_color rgb(f5e0dc)
 
       windowrule {
         name = fix-idea-focus-issue
@@ -133,9 +134,9 @@ in
 
         shadow {
           enabled = true
-          range = 4
+          range = 25
           render_power = 3
-          color = rgba(1a1a1aee)
+          color = rgba(11111b88)
         }
 
       }
