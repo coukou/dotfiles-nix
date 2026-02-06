@@ -15,7 +15,9 @@
 
         media.show_active_only = true;
         launcher.autoDetectIcon = true;
-        workspaces.show_icons = true;
+        workspaces = {
+          show_numbered = true;
+        };
       };
 
       menus = {
