@@ -12,13 +12,23 @@
 
     fontconfig = {
       enable = true;
-      hinting = {
-        enable = true;
-        style = "slight";
+
+      defaultFonts = {
+        sansSerif = [ "Noto Sans" ];
+        serif = [ "Noto Serif" ];
+        monospace = [ "Noto Sans Mono" ];
+        emoji = [ "Noto Color Emoji" ];
       };
+
       antialias = true;
       subpixel = {
         rgba = "rgb";
+        lcdfilter = "default";
+      };
+      hinting = {
+        enable = true;
+        style = "slight";
+        autohint = false;
       };
     };
   };

@@ -6,7 +6,7 @@
     enableFishIntegration = true;
 
     settings = {
-      theme = "TokyoNight";
+      theme = "Catppuccin Mocha";
       font-family = "Maple Mono NF";
       font-size = 13;
       window-padding-x = 12;

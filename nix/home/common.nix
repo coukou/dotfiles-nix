@@ -26,13 +26,25 @@
     };
 
     theme = {
-      name = "palenight";
-      package = pkgs.palenight-theme;
+      name = "Catppuccin-GTK-Mauve-Dark";
+      package = pkgs.magnetic-catppuccin-gtk.override {
+        accent = [ "mauve" ];
+        tweaks = [ "macos" "float" ];
+      };
     };
 
     cursorTheme = {
-      name = "Numix-Cursor";
-      package = pkgs.numix-cursor-theme;
+      package = pkgs.catppuccin-cursors.mochaMauve;
+      name = "Catppuccin Mocha Mauve";
+      size = 24;
+    };
+  };
+
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      text-scaling-factor = 1.1;
+      font-antialiasing = "rgba";
+      font-hinting = "slight";
     };
   };
 

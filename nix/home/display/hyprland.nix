@@ -1,6 +1,5 @@
 { pkgs, inputs, ... }:
 let
-
   # Satty --copy-command does not support flags so we need to wrap wl-copy
   wlCopySattyScript = pkgs.writeShellScriptBin "wl-copy-satty" ''
     ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
@@ -12,16 +11,14 @@ in
   imports = [
     ../programs/kitty.nix
     ../programs/ghostty.nix
-    ../programs/waybar
+    ../programs/hyprpanel.nix
+    ../programs/rofi
   ];
 
   home.packages = with pkgs; [
     jq
     socat
     wl-clipboard
-
-    # drun for wayland
-    wofi
 
     # browser
     firefox
@@ -38,12 +35,18 @@ in
     wayshot
     slurp
 
-    # wallpaper
-    swww
-
     # notifications
     swaynotificationcenter
   ];
+
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      wallpaper = [
+        "${wallpaper}"
+      ];
+    };
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -51,20 +54,16 @@ in
     portalPackage = null;
 
     extraConfig = ''
-      $menu = wofi --show drun
+      $menu = rofi -show drun
       $browser = zen
       $terminal = ghostty
       $fileManager = nautilus
+      $minOpacity = 0.4
+      $opacity = 0.95
 
-      exec-once = swww init
       exec-once = swaync
 
-      exec = sleep 1 && swww img ${wallpaper}
-
       monitor = ,highrr,auto,1,vrr,1
-
-      exec-once = waybar
-      blurls = waybar
 
       general {
         gaps_in = 4
@@ -75,6 +74,19 @@ in
         col.inactive_border = rgba(ffffff20)
 
         layout = dwindle
+      }
+
+      windowrule {
+        name = app-blur-toggle
+        match:class = .*$terminal.*
+        opacity = $opacity
+      }
+
+      layerrule {
+        name = layer-blur-toggle
+        match:namespace = .*waybar.*|.*rofi.*|.*notifications.*
+        blur = on
+        ignore_alpha = $minOpacity
       }
 
       windowrule = match:fullscreen_state_internal 1, border_color rgb(a541f2)
@@ -92,11 +104,31 @@ in
 
         rounding = 4
 
+        # blur {
+        #   enabled = true
+        #   size = 2
+        #   passes = 8
+        #   vibrancy = 0.16574
+        # }
+
         blur {
           enabled = true
-          size = 2
-          passes = 8
-          vibrancy = 0.16574
+
+          size = 6
+          passes = 3
+
+          popups = true
+          popups_ignorealpha = $minOpacity
+          input_methods = true
+          input_methods_ignorealpha = $minOpacity
+
+
+          # resets hyrpland defaults
+          noise  = 0.0
+          contrast = 1.0
+          brightness = 1.0
+          vibrancy = 0.3
+          vibrancy_darkness = 0.3
         }
 
         shadow {

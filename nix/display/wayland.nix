@@ -33,6 +33,7 @@
   environment.sessionVariables = lib.mkMerge [
     {
       XDG_SESSION_TYPE = "wayland";
+      FREETYPE_PROPERTIES = "cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
     }
   ];
 }
