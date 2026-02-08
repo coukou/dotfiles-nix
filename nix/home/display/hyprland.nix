@@ -95,7 +95,7 @@ in
       windowrule {
         name = fix-idea-focus-issue
         match:title = ^win(.*)
-        match:class = jetbrains-idea-ce
+        match:class = jetbrains-idea
 
         no_initial_focus = on
       }

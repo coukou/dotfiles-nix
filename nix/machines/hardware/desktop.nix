@@ -44,6 +44,7 @@
     allowedTCPPorts = [
       3000
       5037
+      11434
     ];
     allowedTCPPortRanges = [
       { from = 8000; to = 8100; }

@@ -20,5 +20,6 @@
     ../programs/idea.nix
     ../programs/tmux.nix
     ../programs/ollama.nix
+    ../programs/appflowy.nix
   ];
 }
