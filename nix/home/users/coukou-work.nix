@@ -17,5 +17,6 @@
     ../programs/tmux.nix
     ../programs/ollama.nix
     ../programs/obsidian.nix
+    ../programs/opencode.nix
   ];
 }
