@@ -42,7 +42,7 @@
 
         overlays = [
           (final: prev: {
-            neovim = inputs.nixvim.packages.${pkgs.system}.default;
+            neovim = inputs.nixvim.packages.${final.system}.default;
           })
         ];
       };

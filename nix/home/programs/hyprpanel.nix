@@ -46,6 +46,11 @@
 
         bar = {
           transparent = true;
+          buttons = {
+            workspaces = {
+              fontSize = "1em";
+            };
+          };
         };
 
         osd = {

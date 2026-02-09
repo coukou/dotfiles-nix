@@ -16,6 +16,6 @@
     ../programs/lazygit.nix
     ../programs/tmux.nix
     ../programs/ollama.nix
-    ../programs/appflowy.nix
+    ../programs/obsidian.nix
   ];
 }
