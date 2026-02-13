@@ -22,5 +22,6 @@
     ../programs/ollama.nix
     ../programs/obsidian.nix
     ../programs/opencode.nix
+    ../programs/proton-pass.nix
   ];
 }
