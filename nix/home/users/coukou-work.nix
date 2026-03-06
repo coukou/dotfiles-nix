@@ -15,7 +15,6 @@
     ../programs/zed-editor.nix
     ../programs/lazygit.nix
     ../programs/tmux.nix
-    ../programs/ollama.nix
     ../programs/obsidian.nix
     ../programs/opencode.nix
     ../programs/proton-pass.nix
