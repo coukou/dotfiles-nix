@@ -23,5 +23,6 @@
     ../programs/obsidian.nix
     ../programs/opencode.nix
     ../programs/proton-pass.nix
+    ../programs/llama-swap.nix
   ];
 }
