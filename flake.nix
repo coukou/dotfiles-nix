@@ -22,6 +22,9 @@
       zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
       nixvim.url = "github:coukou/nixvim";
+
+      jail-nix.url = "sourcehut:~alexdavid/jail.nix";
+      llm-agents.url = "github:numtide/llm-agents.nix";
     };
 
   outputs =
@@ -40,11 +43,9 @@
         inherit system;
         config.allowUnfree = true;
 
-        overlays = [
-          (final: prev: {
-            neovim = inputs.nixvim.packages.${final.system}.default;
-          })
-        ];
+        overlays = import ./nix/overlays/default.nix {
+          inherit system inputs;
+        };
       };
 
       utils = import
