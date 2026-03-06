@@ -13,6 +13,13 @@ let
             --ctx-size 65536
         '';
       };
+      "sweep/next-edit-1.5" = {
+        cmd = ''
+          llama-server
+            -hf sweepai/sweep-next-edit-1.5B:latest
+            --port ''${PORT}
+        '';
+      };
     };
   };
   configFile = pkgs.writeText "config.yaml" (lib.generators.toYAML { } config);
