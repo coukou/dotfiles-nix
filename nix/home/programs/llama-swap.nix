@@ -18,6 +18,11 @@ let
           llama-server
             -hf sweepai/sweep-next-edit-1.5B:latest
             --port ''${PORT}
+            --cache-reuse 64
+            --spec-type ngram-mod
+            --spec-ngram-size-n 24
+            --draft-min 12
+            --draft-max 64
         '';
       };
     };
