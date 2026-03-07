@@ -18,5 +18,6 @@
     ../programs/obsidian.nix
     ../programs/opencode.nix
     ../programs/proton-pass.nix
+    ../programs/draw.nix
   ];
 }

@@ -23,5 +23,6 @@
     ../programs/opencode.nix
     ../programs/proton-pass.nix
     ../programs/llama-swap.nix
+    ../programs/draw.nix
   ];
 }
