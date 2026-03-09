@@ -49,5 +49,10 @@
   programs.fish.enable = true;
   hardware.keyboard.zsa.enable = true;
 
+  # Opentablet driver
+  hardware.opentabletdriver.enable = true;
+  hardware.uinput.enable = true;
+  boot.kernelModules = [ "uipunt" ];
+
   system.stateVersion = stateVersion;
 }
