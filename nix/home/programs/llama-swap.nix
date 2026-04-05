@@ -4,6 +4,8 @@
 }:
 let
   config = {
+    globalTTL = 600; # 10 minutes before unloading unused model
+
     models = {
       "Qwen3.5-9B" = {
         cmd = ''
@@ -23,6 +25,14 @@ let
             --spec-ngram-size-n 24
             --draft-min 12
             --draft-max 64
+        '';
+      };
+      "gemma-4-E2B" = {
+        cmd = ''
+          llama-server
+            -hf unsloth/gemma-4-E2B-it-GGUF:Q4_K_M
+            --port ''${PORT}
+            --ctx-size 65536
         '';
       };
     };
