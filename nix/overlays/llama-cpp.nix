@@ -8,12 +8,12 @@
       blasSupport = true;
     }).overrideAttrs
       (oldAttrs: rec {
-        version = "8514";
+        version = "8665";
         src = final.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
           tag = "b${version}";
-          hash = "sha256-V7lISYIqimGgQaivdJSK+j/BwH4bqTCk7sJ+8pF8W64=";
+          hash = "sha256-5rioYM989O6wXEtC3SWg7v3ZgMCSzE6/RyF6ILzY9rQ=";
           leaveDotGit = true;
           postFetch = ''
             git -C "$out" rev-parse --short HEAD > $out/COMMIT
@@ -23,10 +23,13 @@
         cmakeFlags = (oldAttrs.cmakeFlags or [ ]) ++ [
           "-DGGML_NATIVE=ON"
         ];
+
         preConfigure = ''
           export NIX_ENFORCE_NO_NATIVE=0
           ${oldAttrs.preConfigure or ""}
         '';
+
+        postPatch = "";
       });
   }
 )
