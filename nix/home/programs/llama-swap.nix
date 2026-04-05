@@ -27,12 +27,21 @@ let
             --draft-max 64
         '';
       };
+      "gemma-4-E2B-thinking" = {
+        cmd = ''
+          llama-server
+            -hf unsloth/gemma-4-E2B-it-GGUF:Q4_K_M
+            --port ''${PORT}
+            --ctx-size 65536
+        '';
+      };
       "gemma-4-E2B" = {
         cmd = ''
           llama-server
             -hf unsloth/gemma-4-E2B-it-GGUF:Q4_K_M
             --port ''${PORT}
             --ctx-size 65536
+            --chat-template-kwargs "{\"enable_thinking\": false}"
         '';
       };
     };
