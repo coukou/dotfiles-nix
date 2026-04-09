@@ -2,19 +2,17 @@
 final: prev:
 let
   jail = inputs.jail-nix.lib.init final;
-  opencode-pkg = inputs.llm-agents.packages.${system}.opencode;
+  pi-pkg = inputs.llm-agents.packages.${system}.pi;
 in
 {
-  opencode = jail "opencode" opencode-pkg (with jail.combinators; (
+  pi = jail "pi" pi-pkg (with jail.combinators; (
     [
       network
       time-zone
       no-new-session
       mount-cwd
 
-      (readwrite (noescape "~/.config/opencode"))
-      (readwrite (noescape "~/.local/share/opencode"))
-      (readwrite (noescape "~/.local/state/opencode"))
+      (readwrite (noescape "~/.pi"))
 
       (with final; add-pkg-deps [
         bashInteractive

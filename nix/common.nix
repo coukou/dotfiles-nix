@@ -27,6 +27,8 @@
     registry.nixpkgs.flake = self.inputs.nixpkgs;
   };
 
+  services.gnome.gnome-keyring.enable = true;
+
   time.timeZone = "Europe/Paris";
 
   users.users = builtins.listToAttrs (

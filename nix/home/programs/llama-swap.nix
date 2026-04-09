@@ -4,7 +4,7 @@
 }:
 let
   config = {
-    globalTTL = 600; # 10 minutes before unloading unused model
+    globalTTL = 180; # 3 minutes before unloading unused model
 
     models = {
       "Qwen3.5-9B" = {
@@ -12,36 +12,35 @@ let
           llama-server
             -hf unsloth/Qwen3.5-9B-GGUF:Q4_K_M
             --port ''${PORT}
-            --ctx-size 65536
+            --ctx-size 86016
+            --temp 0.6
+            --top-p 0.95
+            --top-k 20
+            --min-p 0.00
         '';
       };
-      "sweep/next-edit-1.5" = {
+      "gemma-4-E4B-thinking" = {
         cmd = ''
           llama-server
-            -hf sweepai/sweep-next-edit-1.5B:latest
-            --port ''${PORT}
-            --cache-reuse 64
-            --spec-type ngram-mod
-            --spec-ngram-size-n 24
-            --draft-min 12
-            --draft-max 64
-        '';
-      };
-      "gemma-4-E2B-thinking" = {
-        cmd = ''
-          llama-server
-            -hf unsloth/gemma-4-E2B-it-GGUF:Q4_K_M
+            -hf unsloth/gemma-4-E4B-it-GGUF:Q8_0
             --port ''${PORT}
             --ctx-size 65536
+            --temp 1.0
+            --top-p 0.95
+            --top-k 64
+            --reasoning on
         '';
       };
-      "gemma-4-E2B" = {
+      "gemma-4-E4B" = {
         cmd = ''
           llama-server
-            -hf unsloth/gemma-4-E2B-it-GGUF:Q4_K_M
+            -hf unsloth/gemma-4-E4B-it-GGUF:Q8_0
             --port ''${PORT}
-            --ctx-size 65536
-            --chat-template-kwargs "{\"enable_thinking\": false}"
+            --ctx-size 32768
+            --temp 1.0
+            --top-p 0.95
+            --top-k 64
+            --reasoning off
         '';
       };
     };

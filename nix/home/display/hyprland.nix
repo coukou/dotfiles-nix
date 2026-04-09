@@ -62,7 +62,6 @@ in
       $opacity = 0.95
 
       exec-once = swaync
-      exec-once = sleep 2 && 1password --silent
 
       monitor = ,highrr,auto,1,vrr,1
 

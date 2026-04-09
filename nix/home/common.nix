@@ -3,10 +3,12 @@
 
   home.packages = with pkgs; [
     dconf
+    seahorse
   ];
 
-  services.ssh-agent = {
+  services.gnome-keyring = {
     enable = true;
+    components = [ "secrets" "ssh" ];
   };
 
   programs.direnv = {
