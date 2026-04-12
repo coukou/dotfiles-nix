@@ -17,7 +17,10 @@
     zen-browser.url = "github:youwen5/zen-browser-flake?ref=f2f8aff94529e763665b807bad23396aed9d1fe8";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixvim.url = "github:coukou/nixvim";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     jail-nix.url = "sourcehut:~alexdavid/jail.nix";
     llm-agents.url = "github:numtide/llm-agents.nix";
 

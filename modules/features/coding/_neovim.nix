@@ -1,8 +1,8 @@
 { ... }: {
-  flake.modules.nixos.coding-neovim = { pkgs, inputs, system, ... }: {
+  flake.modules.nixos.coding-neovim = { pkgs, self, system, ... }: {
     nixpkgs.overlays = [
       (final: prev: {
-        neovim = inputs.nixvim.packages.${system}.default;
+        neovim = self.packages.${system}.nvim;
       })
     ];
 
