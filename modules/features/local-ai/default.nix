@@ -1,4 +1,6 @@
 { self, ... }: {
+  imports = [ ./_llama-swap.nix ./_pi.nix ];
+
   flake.modules.homeManager.local-ai = { ... }: {
     imports = with self.modules.homeManager; [
       local-ai-llama-swap
