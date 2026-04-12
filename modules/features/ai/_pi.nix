@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.nixos.local-ai-pi = { inputs, system, ... }: {
+  flake.modules.nixos.ai-pi = { inputs, system, ... }: {
     nixpkgs.overlays = [
       (final: prev:
         let
@@ -24,7 +24,7 @@
     ];
   };
 
-  flake.modules.homeManager.local-ai-pi = { pkgs, ... }: {
+  flake.modules.homeManager.ai-pi = { pkgs, ... }: {
     home.packages = [ pkgs.pi ];
   };
 }
