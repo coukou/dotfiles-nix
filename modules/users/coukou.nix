@@ -8,6 +8,7 @@
     };
 
     home-manager.users.coukou = {
+      myConfig.protonPassVault = "Personal";
       imports = with self.modules.homeManager; [
         base
         display

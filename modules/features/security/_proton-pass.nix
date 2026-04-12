@@ -15,7 +15,7 @@
         Description = "Proton Pass SSH agent";
       };
       Service = {
-        ExecStart = "${pkgs.proton-pass-cli}/bin/pass-cli ssh-agent start --vault-name=${config.home.username}";
+        ExecStart = "${pkgs.proton-pass-cli}/bin/pass-cli ssh-agent start --vault-name=${config.myConfig.protonPassVault}";
         Restart = "on-failure";
         RestartSec = "5";
       };
