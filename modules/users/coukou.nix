@@ -18,6 +18,7 @@
         communication
         browser
         productivity
+        security
       ];
       home.stateVersion = stateVersion;
     };

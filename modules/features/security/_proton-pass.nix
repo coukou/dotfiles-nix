@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.productivity-proton-pass = { pkgs, config, ... }: {
+  flake.modules.homeManager.security-proton-pass = { pkgs, config, ... }: {
     home.packages = with pkgs; [
       proton-pass
       proton-pass-cli
