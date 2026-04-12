@@ -13,6 +13,8 @@
     systemd.user.services.proton-pass-ssh-agent = {
       Unit = {
         Description = "Proton Pass SSH agent";
+        After = [ "gnome-keyring-daemon.service" ];
+        Wants = [ "gnome-keyring-daemon.service" ];
       };
       Service = {
         ExecStart = "${pkgs.proton-pass-cli}/bin/pass-cli ssh-agent start --vault-name=${config.myConfig.protonPassVault}";
