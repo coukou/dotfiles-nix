@@ -19,16 +19,10 @@
     time.timeZone = "Europe/Paris";
     i18n.defaultLocale = "en_US.UTF-8";
 
-    programs.fish.enable = true;
-
     environment.systemPackages = with pkgs; [
       git
       htop
-      neovim
-      devenv
     ];
-
-    environment.variables.EDITOR = "nvim";
 
     home-manager = {
       useGlobalPkgs = true;

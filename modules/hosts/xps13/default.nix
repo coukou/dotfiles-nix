@@ -14,7 +14,8 @@
       services-networking
       services-1password
       services-keyboard-zsa
-      services-dev-tools
+      shell
+      coding
       user-coukou
     ];
   };

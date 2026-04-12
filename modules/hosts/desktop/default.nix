@@ -16,7 +16,8 @@
       services-1password
       services-keyboard-zsa
       services-opentablet
-      services-dev-tools
+      shell
+      coding
       user-coukou
       user-coukou-work
     ];

@@ -7,6 +7,10 @@
     ./_tmux.nix
   ];
 
+  flake.modules.nixos.shell = { ... }: {
+    imports = [ self.modules.nixos.shell-fish ];
+  };
+
   flake.modules.homeManager.shell = { ... }: {
     imports = with self.modules.homeManager; [
       shell-fish
