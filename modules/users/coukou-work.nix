@@ -7,7 +7,17 @@
     };
 
     home-manager.users.coukou-work = {
-      imports = [ (self + /home/profiles/coukou-work.nix) ];
+      imports = with self.modules.homeManager; [
+        base
+        display
+        shell
+        coding
+        ai
+        media
+        communication
+        browser
+        productivity
+      ];
       home.stateVersion = stateVersion;
     };
   };

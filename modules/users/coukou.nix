@@ -7,7 +7,18 @@
     };
 
     home-manager.users.coukou = {
-      imports = [ (self + /home/profiles/coukou.nix) ];
+      imports = with self.modules.homeManager; [
+        base
+        display
+        shell
+        coding
+        ai
+        local-ai
+        media
+        communication
+        browser
+        productivity
+      ];
       home.stateVersion = stateVersion;
     };
   };

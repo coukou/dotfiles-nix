@@ -1,3 +1,0 @@
-{ ... }: {
-  imports = [ ./_opencode.nix ];
-}
