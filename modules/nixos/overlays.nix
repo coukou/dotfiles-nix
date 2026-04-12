@@ -1,11 +1,6 @@
 { ... }: {
   flake.modules.nixos.overlays = { inputs, system, ... }: {
     nixpkgs.overlays = [
-      # neovim from nixvim flake
-      (final: prev: {
-        neovim = inputs.nixvim.packages.${system}.default;
-      })
-
       # llama-cpp with CUDA + native optimisations
       (final: prev: {
         llama-cpp = (prev.llama-cpp.override {
