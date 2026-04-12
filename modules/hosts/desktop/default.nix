@@ -6,7 +6,6 @@
       base
       boot
       fonts
-      overlays
       hardware-desktop
       hardware-nvidia
       hardware-bluetooth
@@ -18,6 +17,8 @@
       services-opentablet
       shell
       coding
+      ai
+      local-ai
       user-coukou
       user-coukou-work
     ];

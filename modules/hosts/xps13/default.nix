@@ -6,7 +6,6 @@
       base
       boot
       fonts
-      overlays
       hardware-xps13
       hardware-bluetooth
       hardware-intel-laptop
@@ -16,6 +15,7 @@
       services-keyboard-zsa
       shell
       coding
+      ai
       user-coukou
     ];
   };
