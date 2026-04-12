@@ -4,6 +4,8 @@
     stateVersion = "26.05";
     nixosModules = with self.modules.nixos; [
       base
+      boot
+      fonts
       overlays
       hardware-desktop
       hardware-nvidia
@@ -14,6 +16,7 @@
       services-1password
       services-keyboard-zsa
       services-opentablet
+      services-dev-tools
       user-coukou
       user-coukou-work
     ];

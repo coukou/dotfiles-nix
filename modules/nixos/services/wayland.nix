@@ -2,6 +2,8 @@
   flake.modules.nixos.services-wayland = { pkgs, ... }: {
     hardware.graphics.enable = true;
     security.rtkit.enable = true;
+    security.polkit.enable = true;
+    services.gnome.gnome-keyring.enable = true;
 
     services.pipewire = {
       enable = true;

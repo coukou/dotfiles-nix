@@ -4,6 +4,8 @@
     stateVersion = "26.05";
     nixosModules = with self.modules.nixos; [
       base
+      boot
+      fonts
       overlays
       hardware-xps13
       hardware-bluetooth
@@ -12,6 +14,7 @@
       services-networking
       services-1password
       services-keyboard-zsa
+      services-dev-tools
       user-coukou
     ];
   };
