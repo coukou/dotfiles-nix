@@ -2,6 +2,7 @@
   flake.modules.nixos.user-coukou-work = { pkgs, stateVersion, ... }: {
     users.users.coukou-work = {
       isNormalUser = true;
+      initialPassword = "changeme";
       shell = pkgs.fish;
       extraGroups = [ "wheel" "docker" "audio" "video" "kvm" "tty" ];
     };
