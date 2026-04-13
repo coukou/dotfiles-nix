@@ -1,4 +1,4 @@
-{
+{ ... }: {
   plugins = {
     blink-compat = {
       enable = true;
@@ -19,7 +19,7 @@
         signature = {
           enabled = true;
           window = {
-            border = "rounded";
+            border = "single";
           };
         };
 
@@ -32,13 +32,21 @@
         };
 
         completion = {
-          menu = {
-            border = "rounded";
+          ghost_text = {
+            enabled = true;
           };
+
+          menu = {
+            border = "single";
+            draw = {
+              columns.__raw = ''{ { "kind_icon", gap = 1 }, { "label", "label_description", gap = 1 } }'';
+            };
+          };
+
           documentation = {
             auto_show = true;
             window = {
-              border = "rounded";
+              border = "single";
             };
           };
         };

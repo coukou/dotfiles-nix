@@ -3,7 +3,12 @@
     let
       nvim = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
         inherit pkgs;
-        module = { imports = [ ../_packages/nixvim/default.nix ]; };
+        module = {
+          imports = [ (inputs.import-tree ../_packages/nixvim) ];
+          # imports = [
+          #   ../_packages/nixvim/_default.nix
+          # ];
+        };
         extraSpecialArgs = { inherit inputs system; };
       };
     in

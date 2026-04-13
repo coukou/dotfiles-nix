@@ -1,18 +1,8 @@
 {
-
-  plugins.snacks = {
-    settings = {
-      input = {
-        enabled = true;
-      };
-    };
-  };
-
   plugins.codecompanion = {
     enable = true;
 
     settings = {
-
       adapters = {
         http = {
           local-qwen.__raw = ''function()
@@ -50,4 +40,3 @@
     }
   ];
 }
-

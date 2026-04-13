@@ -1,10 +1,24 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   extraPackages = [ pkgs.ripgrep ];
+
+  plugins.harpoon = {
+    enable = true;
+    enableTelescope = true;
+  };
+
   plugins.telescope = {
     enable = true;
 
     settings = {
+      pickers = {
+        buffers = {
+          mappings = {
+            i = { "<C-d>".__raw = "require('telescope.actions').delete_buffer"; };
+            n = { "<C-d>".__raw = "require('telescope.actions').delete_buffer"; };
+          };
+        };
+      };
+
       file_ignore_patterns = [
         "%.git/"
         "%.DS_Store"
@@ -75,4 +89,17 @@
       };
     };
   };
+
+  keymaps = [
+    {
+      key = "<leader>ha";
+      action.__raw = ''function() require("harpoon"):list():add() end'';
+      options.desc = "Add file to harpoon list";
+    }
+    {
+      key = "<leader>he";
+      action.__raw = ''function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end'';
+      options.desc = "Toggle harpoon quick menu";
+    }
+  ];
 }
