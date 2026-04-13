@@ -20,11 +20,7 @@
               find "$out" -name .git -print0 | xargs -0 rm -rf
             '';
           };
-          cmakeFlags = (oldAttrs.cmakeFlags or [ ]) ++ [ "-DGGML_NATIVE=ON" ];
-          preConfigure = ''
-            export NIX_ENFORCE_NO_NATIVE=0
-            ${oldAttrs.preConfigure or ""}
-          '';
+          cmakeFlags = oldAttrs.cmakeFlags or [ ];
           postPatch = "";
         });
       })
