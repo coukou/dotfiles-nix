@@ -5,9 +5,6 @@
         inherit pkgs;
         module = {
           imports = [ (inputs.import-tree ../_packages/nixvim) ];
-          # imports = [
-          #   ../_packages/nixvim/_default.nix
-          # ];
         };
         extraSpecialArgs = { inherit inputs system; };
       };
