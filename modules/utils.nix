@@ -10,6 +10,7 @@
       { name
       , stateVersion
       , nixosModules
+      , users ? { }
       , system ? "x86_64-linux"
       }:
       let
@@ -47,12 +48,25 @@
 
           system.stateVersion = stateVersion;
         };
+
+        usersModule = { pkgs, ... }: {
+          users.users = builtins.mapAttrs (_: user: {
+            isNormalUser = true;
+            initialPassword = "changeme";
+            shell = pkgs.fish;
+            extraGroups = user.extraGroups;
+          }) users;
+
+          home-manager.users = builtins.mapAttrs (_: user:
+            user.homeManager // { home.stateVersion = stateVersion; }
+          ) users;
+        };
       in
       {
         ${name} = inputs.nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs self stateVersion system; };
-          modules = [ baseModule ] ++ nixosModules;
+          modules = [ baseModule usersModule ] ++ nixosModules;
         };
       };
   };

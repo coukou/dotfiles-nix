@@ -26,7 +26,7 @@
     networking.firewall = {
       enable = true;
       allowedTCPPorts = [ 3000 5037 11434 ];
-      allowedTCPPortRanges = [ { from = 8000; to = 8100; } ];
+      allowedTCPPortRanges = [{ from = 8000; to = 8100; }];
     };
 
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
