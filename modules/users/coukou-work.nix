@@ -10,16 +10,8 @@
     home-manager.users.coukou-work = {
       myConfig.protonPassVault = "Work";
       imports = with self.modules.homeManager; [
-        base
-        display
-        shell
-        coding
-        ai
-        media
-        communication
-        browser
-        productivity
-        security
+        window-manager theming shell coding
+        ai media communication browser productivity security
       ];
       home.stateVersion = stateVersion;
     };

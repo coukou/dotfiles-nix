@@ -3,24 +3,13 @@
     name = "desktop";
     stateVersion = "26.05";
     nixosModules = with self.modules.nixos; [
-      base
-      boot
-      fonts
+      base boot fonts
       hardware-desktop
-      hardware-nvidia
-      hardware-bluetooth
-      services-wayland
-      services-networking
-      services-docker
-      services-1password
-      services-keyboard-zsa
-      services-opentablet
-      shell
-      coding
-      ai
-      local-ai
-      user-coukou
-      user-coukou-work
+      nvidia bluetooth
+      networking docker onepassword keyboard-zsa opentablet
+      window-manager
+      shell coding ai local-ai
+      user-coukou user-coukou-work
     ];
   };
 }

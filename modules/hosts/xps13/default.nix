@@ -3,19 +3,12 @@
     name = "xps13";
     stateVersion = "26.05";
     nixosModules = with self.modules.nixos; [
-      base
-      boot
-      fonts
+      base boot fonts
       hardware-xps13
-      hardware-bluetooth
-      hardware-intel-laptop
-      services-wayland
-      services-networking
-      services-1password
-      services-keyboard-zsa
-      shell
-      coding
-      ai
+      bluetooth intel-laptop
+      networking onepassword keyboard-zsa
+      window-manager
+      shell coding ai
       user-coukou
     ];
   };

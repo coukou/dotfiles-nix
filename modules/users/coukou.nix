@@ -10,17 +10,8 @@
     home-manager.users.coukou = {
       myConfig.protonPassVault = "Personal";
       imports = with self.modules.homeManager; [
-        base
-        display
-        shell
-        coding
-        ai
-        local-ai
-        media
-        communication
-        browser
-        productivity
-        security
+        window-manager theming shell coding
+        ai local-ai media communication browser productivity security
       ];
       home.stateVersion = stateVersion;
     };
