@@ -3,6 +3,8 @@
     home.packages = [
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
       pkgs.brave
+      pkgs.firefox
+      pkgs.chromium
     ];
   };
 }

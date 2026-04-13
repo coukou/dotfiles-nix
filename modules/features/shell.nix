@@ -4,6 +4,8 @@
   };
 
   flake.modules.homeManager.shell = { pkgs, ... }: {
+    home.packages = with pkgs; [ jq socat ];
+
     programs.fish.enable = true;
 
     programs.starship = {

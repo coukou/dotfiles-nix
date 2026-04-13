@@ -46,11 +46,7 @@
     in
     {
       home.packages = with pkgs; [
-        jq
-        socat
         wl-clipboard
-        firefox
-        chromium
         nautilus
         pavucontrol
         satty
