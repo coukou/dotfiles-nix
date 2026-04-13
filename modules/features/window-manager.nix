@@ -50,7 +50,7 @@
         nautilus
         pavucontrol
         satty
-        wayshot
+        grim
         slurp
         swaynotificationcenter
       ];
@@ -203,8 +203,8 @@
           bind = $mainMod, D, exec, $menu
           bind = $mainMod, P, pin
 
-          bind = $mainMod SHIFT CTRL, s, exec, wayshot --stdout | satty --filename - --early-exit --copy-command "${wlCopySattyScript}/bin/wl-copy-satty"
-          bind = $mainMod CTRL, s, exec, wayshot --stdout -s "$(slurp)" | satty --filename - --early-exit --copy-command "${wlCopySattyScript}/bin/wl-copy-satty"
+          bind = $mainMod SHIFT CTRL, s, exec, grim - | satty --filename - --early-exit --copy-command "${wlCopySattyScript}/bin/wl-copy-satty"
+          bind = $mainMod CTRL, s, exec, grim -g "$(slurp)" - | satty --filename - --early-exit --copy-command "${wlCopySattyScript}/bin/wl-copy-satty"
 
           bind = $mainMod, left, movefocus, l
           bind = $mainMod, right, movefocus, r
