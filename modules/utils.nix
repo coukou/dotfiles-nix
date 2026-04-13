@@ -50,16 +50,20 @@
         };
 
         usersModule = { pkgs, ... }: {
-          users.users = builtins.mapAttrs (_: user: {
-            isNormalUser = true;
-            initialPassword = "changeme";
-            shell = pkgs.fish;
-            extraGroups = user.extraGroups;
-          }) users;
+          users.users = builtins.mapAttrs
+            (_: user: {
+              isNormalUser = true;
+              initialPassword = "changeme";
+              shell = pkgs.fish;
+              extraGroups = user.extraGroups;
+            })
+            users;
 
-          home-manager.users = builtins.mapAttrs (_: user:
-            user.homeManager // { home.stateVersion = stateVersion; }
-          ) users;
+          home-manager.users = builtins.mapAttrs
+            (_: user:
+              user.homeManager // { home.stateVersion = stateVersion; }
+            )
+            users;
         };
       in
       {

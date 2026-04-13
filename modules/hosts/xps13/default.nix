@@ -4,12 +4,18 @@
     stateVersion = "26.05";
 
     nixosModules = with self.modules.nixos; [
-      systemd-boot theming
+      systemd-boot
+      theming
       hardware-xps13
-      bluetooth intel-laptop
-      networking onepassword keyboard-zsa
+      bluetooth
+      intel-laptop
+      networking
+      onepassword
+      keyboard-zsa
       window-manager
-      shell coding ai
+      shell
+      coding
+      ai
     ];
 
     users = {
@@ -18,8 +24,15 @@
         homeManager = {
           myConfig.protonPassVault = "Personal";
           imports = with self.modules.homeManager; [
-            window-manager theming shell coding
-            ai media browser productivity security
+            window-manager
+            theming
+            shell
+            coding
+            ai
+            media
+            browser
+            productivity
+            security
           ];
         };
       };

@@ -46,10 +46,16 @@
     in
     {
       home.packages = with pkgs; [
-        jq socat wl-clipboard
-        firefox chromium
-        nautilus pavucontrol
-        satty wayshot slurp
+        jq
+        socat
+        wl-clipboard
+        firefox
+        chromium
+        nautilus
+        pavucontrol
+        satty
+        wayshot
+        slurp
         swaynotificationcenter
       ];
 

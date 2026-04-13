@@ -4,12 +4,21 @@
     stateVersion = "26.05";
 
     nixosModules = with self.modules.nixos; [
-      systemd-boot theming
+      systemd-boot
+      theming
       hardware-desktop
-      nvidia-driver bluetooth
-      networking docker onepassword keyboard-zsa opentablet
+      nvidia-driver
+      bluetooth
+      networking
+      docker
+      onepassword
+      keyboard-zsa
+      opentablet
       window-manager
-      shell coding ai local-ai
+      shell
+      coding
+      ai
+      local-ai
     ];
 
     users = {
@@ -18,8 +27,17 @@
         homeManager = {
           myConfig.protonPassVault = "Personal";
           imports = with self.modules.homeManager; [
-            window-manager theming shell coding
-            ai local-ai media communication browser productivity security
+            window-manager
+            theming
+            shell
+            coding
+            ai
+            local-ai
+            media
+            communication
+            browser
+            productivity
+            security
           ];
         };
       };
@@ -29,8 +47,16 @@
         homeManager = {
           myConfig.protonPassVault = "Work";
           imports = with self.modules.homeManager; [
-            window-manager theming shell coding
-            ai media communication browser productivity security
+            window-manager
+            theming
+            shell
+            coding
+            ai
+            media
+            communication
+            browser
+            productivity
+            security
           ];
         };
       };

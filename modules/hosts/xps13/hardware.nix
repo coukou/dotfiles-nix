@@ -19,7 +19,7 @@
       fsType = "vfat";
     };
 
-    swapDevices = [ { device = "/dev/disk/by-uuid/fd87a6b2-3fab-48c6-86d8-646ff3d2adb2"; } ];
+    swapDevices = [{ device = "/dev/disk/by-uuid/fd87a6b2-3fab-48c6-86d8-646ff3d2adb2"; }];
 
     networking.useDHCP = lib.mkDefault true;
 
