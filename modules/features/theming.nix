@@ -1,5 +1,7 @@
 { ... }: {
   flake.modules.nixos.theming = { pkgs, ... }: {
+    programs.dconf.enable = true;
+
     fonts = {
       packages = with pkgs; [
         maple-mono.NF
