@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.nixos.nvidia = { config, ... }: {
+  flake.modules.nixos.nvidia-driver = { config, ... }: {
     boot.kernelParams = [ "nvidia_drm.fbdev=1" "nvidia-drm.modeset=1" ];
     services.xserver.videoDrivers = [ "nvidia" ];
 

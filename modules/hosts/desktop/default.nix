@@ -3,9 +3,9 @@
     name = "desktop";
     stateVersion = "26.05";
     nixosModules = with self.modules.nixos; [
-      base systemd-boot theming
+      systemd-boot theming
       hardware-desktop
-      nvidia bluetooth
+      nvidia-driver bluetooth
       networking docker onepassword keyboard-zsa opentablet
       window-manager
       shell coding ai local-ai
