@@ -1,5 +1,11 @@
-{ ... }: {
-  flake.modules.nixos.window-manager = { pkgs, ... }: {
+{ inputs, ... }:
+{
+  flake.modules.nixos.window-manager = { pkgs, system, ... }: {
+    programs.hyprland = {
+      enable = true;
+      package = inputs.hyprland.packages.${system}.hyprland;
+    };
+
     hardware.graphics.enable = true;
     security.rtkit.enable = true;
     security.polkit.enable = true;
@@ -20,7 +26,6 @@
       xdgOpenUsePortal = true;
       config.common.default = [ "hyprland" "gtk" ];
       extraPortals = with pkgs; [
-        xdg-desktop-portal-hyprland
         xdg-desktop-portal-gtk
       ];
     };
@@ -33,7 +38,7 @@
     };
   };
 
-  flake.modules.homeManager.window-manager = { self, pkgs, inputs, ... }:
+  flake.modules.homeManager.window-manager = { self, pkgs, ... }:
     let
       wlCopySattyScript = pkgs.writeShellScriptBin "wl-copy-satty" ''
         ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
@@ -105,7 +110,7 @@
 
       wayland.windowManager.hyprland = {
         enable = true;
-        package = (inputs.hyprland.packages."x86_64-linux".hyprland.override { });
+        package = inputs.hyprland.packages.${pkgs.system}.hyprland;
         portalPackage = null;
 
         extraConfig = ''

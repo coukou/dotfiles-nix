@@ -15,6 +15,7 @@
       keyboard-zsa
       opentablet
       window-manager
+      greeter
       shell
       coding
       ai

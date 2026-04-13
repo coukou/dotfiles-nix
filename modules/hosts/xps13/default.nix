@@ -13,6 +13,7 @@
       onepassword
       keyboard-zsa
       window-manager
+      greeter
       shell
       coding
       ai
