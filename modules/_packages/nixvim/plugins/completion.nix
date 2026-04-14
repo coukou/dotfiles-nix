@@ -39,7 +39,7 @@
           menu = {
             border = "single";
             draw = {
-              columns.__raw = ''{ { "kind_icon", gap = 1 }, { "label", "label_description", gap = 1 } }'';
+              columns.__raw = ''{ { "label", "label_description", gap = 1 }, { "kind_icon", gap = 1 }, { "kind" } }'';
             };
           };
 
