@@ -20,4 +20,8 @@
       max_lines = 1;
     };
   };
+
+  plugins.ts-autotag = {
+    enable = true;
+  };
 }
