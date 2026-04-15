@@ -26,7 +26,6 @@
             TreesitterContext           = { fg = colors.overlay0, bg = colors.mantle },
             TreesitterContextBottom     = { bg = colors.mantle, underline = true, sp = colors.surface1 },
             TreesitterContextLineNumber = { fg = colors.overlay0, bg = colors.mantle },
-
             BlinkCmpGhostText    = { fg = colors.overlay2, italic = true },
             BlinkCmpMenuBorder   = { fg = colors.overlay0 },
             BlinkCmpDocBorder    = { fg = colors.overlay0 },
