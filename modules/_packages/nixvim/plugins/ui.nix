@@ -13,14 +13,12 @@
           left_arrow = "━";
           right_arrow = "━";
         };
-        style    = "HLChunk";
         duration = 0;
-        delay    = 0;
+        delay = 0;
       };
 
       indent = {
         enable = true;
-        style  = "HLIndent";
       };
     };
   };

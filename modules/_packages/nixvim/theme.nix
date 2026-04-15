@@ -11,10 +11,6 @@
             NeoTreeNormalNC    = { bg = colors.mantle },
             NeoTreeEndOfBuffer = { bg = colors.mantle },
 
-            -- hlchunk bracket and indent guide colours
-            HLChunk  = { fg = colors.overlay1 },
-            HLIndent = { fg = colors.surface2 },
-
             WinSeparator = { fg = colors.surface2 },
             FloatBorder  = { fg = colors.overlay0 },
             FloatTitle   = { fg = colors.subtext1, bold = true },
@@ -99,22 +95,7 @@
     };
   };
 
-  # fillchars set again post-startup to survive any plugin that resets them.
-  # Also patches lualine section backgrounds here — custom_highlights runs
-  # before lualine's own ColorScheme handler and gets overwritten, so the
-  # only reliable fix is vim.schedule'd nvim_set_hl after lualine has fired.
   extraConfigLuaPost = ''
-    vim.opt.fillchars = {
-      vert      = "│",
-      horiz     = "─",
-      horizup   = "┴",
-      horizdown = "┬",
-      vertleft  = "┤",
-      vertright = "├",
-      verthoriz = "┼",
-      eob       = " ",
-    }
-
     do
       local function patch_lualine()
         vim.schedule(function()

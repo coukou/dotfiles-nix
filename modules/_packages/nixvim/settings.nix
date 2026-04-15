@@ -17,5 +17,8 @@
     laststatus = 2;
     cmdheight = 1;
     timeoutlen = 1000;
+    numberwidth = 2;
+
+    statuscolumn = "%=%l %s%C ";
   };
 }
