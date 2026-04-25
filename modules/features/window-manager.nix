@@ -119,7 +119,6 @@
           $terminal = ghostty
           $fileManager = nautilus
           $minOpacity = 0.4
-          $opacity = 0.95
 
           exec-once = swaync
 
@@ -132,12 +131,6 @@
             col.active_border = rgb(cba6f7)
             col.inactive_border = rgb(11111b)
             layout = dwindle
-          }
-
-          windowrule {
-            name = app-blur-toggle
-            match:class = .*$terminal.*
-            opacity = $opacity
           }
 
           layerrule {
