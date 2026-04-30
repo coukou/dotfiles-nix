@@ -7,19 +7,20 @@
           rocmSupport = false;
           metalSupport = false;
           blasSupport = true;
-        }).overrideAttrs (oldAttrs: {
-          version = "8665";
+        }).overrideAttrs (oldAttrs: rec {
+          version = "8984";
           src = final.fetchFromGitHub {
             owner = "ggml-org";
             repo = "llama.cpp";
-            tag = "b8665";
-            hash = "sha256-5rioYM989O6wXEtC3SWg7v3ZgMCSzE6/RyF6ILzY9rQ=";
+            tag = "b${version}";
+            hash = "sha256-T5IRcbI4OTT2Cl2IKHOxBYQudqGUUGmZqcZz/0OO6U8=";
             leaveDotGit = true;
             postFetch = ''
               git -C "$out" rev-parse --short HEAD > $out/COMMIT
               find "$out" -name .git -print0 | xargs -0 rm -rf
             '';
           };
+          npmDepsHash = "sha256-iYJB0z2YHG8OzEA9EwHUZrDa5obr5m2sbnIH+of28o0=";
           cmakeFlags = oldAttrs.cmakeFlags or [ ];
           postPatch = "";
         });
@@ -28,8 +29,8 @@
         llama-swap = final.runCommand "llama-swap" { } ''
           mkdir -p $out/bin
           tar -xzf ${final.fetchurl {
-            url = "https://github.com/mostlygeek/llama-swap/releases/download/v197/llama-swap_197_linux_amd64.tar.gz";
-            hash = "sha256-GOP31onCrHvwvutsDXJV0uj+EKKaQdmZfiaBS0tX7Co=";
+            url = "https://github.com/mostlygeek/llama-swap/releases/download/v209/llama-swap_209_linux_amd64.tar.gz";
+            hash = "sha256-DD/+YvT19nde+SvVLRuU4uJLLYQiD3AYRhESa+5OLRo=";
           }} -C $out/bin
           chmod +x $out/bin/llama-swap
         '';
