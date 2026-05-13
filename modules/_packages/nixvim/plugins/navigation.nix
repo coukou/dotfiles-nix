@@ -87,6 +87,14 @@
         action = "lsp_definitions";
         options.desc = "[Find] LSP definitions";
       };
+      "<leader>tr" = {
+        action = "resume";
+        options.desc = "Telescope resume";
+      };
+      "<leader>tp" = {
+        action = "pickers";
+        options.desc = "Telescope recent actions list";
+      };
     };
   };
 
