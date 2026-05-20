@@ -67,5 +67,12 @@
       action.__raw = ''require("actions-preview").code_actions'';
       options.desc = "Code actions";
     }
+    {
+      key = "<leader>uh";
+      action.__raw = ''function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+      end'';
+      options.desc = "LSP Toggle hint";
+    }
   ];
 }
