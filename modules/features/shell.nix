@@ -20,7 +20,7 @@
       settings = {
         theme = "Catppuccin Mocha";
         font-family = "Maple Mono NF";
-        font-size = 13;
+        font-size = 14;
         window-padding-x = 12;
         window-padding-y = 4;
         cursor-invert-fg-bg = true;
