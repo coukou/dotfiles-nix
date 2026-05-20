@@ -40,14 +40,9 @@
       };
 
       code = {
-        sign = false;
-        style = "full";
-        border = "thin";
+        sign = true;
         width = "block";
-        min_width = 40;
         language_name = true;
-        left_pad = 2;
-        right_pad = 2;
       };
 
       bullet = {
